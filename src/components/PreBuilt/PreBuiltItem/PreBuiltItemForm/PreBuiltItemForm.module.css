@@ -1,0 +1,11 @@
+.cart {
+    margin-top: 1rem;
+}
+
+.cart button {
+    color: #b9b9b9;
+    background-color: rgba(70,70,70,.5);
+    border-radius: 25px;
+    width: 50%;
+    padding: 1rem;
+}

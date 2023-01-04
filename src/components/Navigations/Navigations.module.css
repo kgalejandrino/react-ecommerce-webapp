@@ -1,0 +1,14 @@
+.navigations {
+    display: flex;
+}
+
+.navigations li {
+    list-style-type: none;
+    margin: 0 1em;
+}
+
+.navigations li a {
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}

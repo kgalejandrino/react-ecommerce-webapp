@@ -1,0 +1,46 @@
+/* Cart Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    margin-top: 4rem;
+    padding: 1rem 0;
+    color: #6e6e6e;
+}
+
+.header p {
+    text-transform: uppercase;
+}
+
+.header span {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Cart Total */
+.empty {
+    text-transform: uppercase;
+    border-bottom: 1px solid #e0e0e0; 
+    padding: 2rem 0;
+}
+.total {
+    border-bottom: 1px solid #e0e0e0; 
+    padding: 1rem 0;
+}
+
+.total p {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Cart Buttons */
+.cart-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-btns button {
+    margin-top: 1rem;
+    border-radius: 25px;
+}

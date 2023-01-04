@@ -1,0 +1,21 @@
+.btn {
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.primary { background-color: #ff1e20; }
+
+.primary:hover { background-color: #d11a1d; }
+
+.secondary { background-color: #1f1f1f; }
+
+.secondary:hover { background-color: #3b3b3b; }
+
+button:disabled,
+button[disabled],
+button[disabled]:hover{
+  background-color: #f5f5f5;
+  color: rgb(204, 204, 204);
+  cursor: default;
+}

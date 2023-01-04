@@ -1,0 +1,37 @@
+.banner {
+    background-image: url('../../assets/prebuilt-banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+/* PreBuilt Banner Image */
+.banner-image {
+    width: 50%;
+    height: 100%;
+}
+
+.banner-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* PreBuilt Banner Textbox */
+.banner-textbox {
+    width: 40%;
+    padding-top: 5em;
+}
+
+.banner-textbox h3 {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.banner-textbox p {
+    font-weight: 300;
+    margin-bottom: 1em;
+}

@@ -1,0 +1,43 @@
+.item {
+    width: 30%;
+    text-align: center;
+    margin-top: 6rem;
+    padding-bottom: 2rem;
+    transform: scale(.9);
+    transition: all .2s ease-in-out;
+}
+
+.item:hover {
+    background-color: rgba(48, 48, 48, 0.5);
+    transform: scale(1.05);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.description {
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    margin-top: -5vw;
+}
+
+.item h3 {
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.description p {
+    margin-bottom: 0.5rem;
+    color: #b9b9b9;
+    font-size: 0.87rem;
+}
+
+.price {
+    color: #fe5a1d;
+    font-size: 1.75rem;
+}

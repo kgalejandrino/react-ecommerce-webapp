@@ -1,5 +1,6 @@
 .prebuilt {
     background-color: #181719;
+    padding: 5rem 0;
 }
 
 .title {
@@ -7,7 +8,6 @@
     font-size: 3em;
     text-transform: uppercase;
     text-align: center;
-    padding: 5rem 0;
 }
 
 .flex {
@@ -32,3 +32,12 @@
     flex-wrap: wrap;
 }
 
+.loading, .error {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 3em;
+}
+
+.error { color: #ff1e20}

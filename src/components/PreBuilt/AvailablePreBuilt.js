@@ -5,12 +5,19 @@ import PreBuiltItem from "./PreBuiltItem/PreBuiltItem";
 
 const AvailablePreBuilt = (props) => {
   const [prebuilt, setPrebuilt] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState(null);
 
   useEffect(() => {
     const fetchPrebuilt = async () => {
       const response = await fetch(
         "https://react-ecommerce-pcbuilds-default-rtdb.firebaseio.com/prebuilt.json"
       );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
       const data = await response.json();
 
       const loadedPrebuilt = [];
@@ -26,8 +33,13 @@ const AvailablePreBuilt = (props) => {
         });
       }
       setPrebuilt(loadedPrebuilt);
+      setIsLoading(false);
     };
-    fetchPrebuilt();
+
+    fetchPrebuilt().catch((error) => {
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
   }, []);
 
   const preBuiltItem = prebuilt.map((item) => (
@@ -53,7 +65,11 @@ const AvailablePreBuilt = (props) => {
           <option value="high">Sort by price: high to low</option>
         </select>
       </div>
-      <div className={`${classes.items} side-padding`}>{preBuiltItem}</div>
+      {isLoading && <div className={classes.loading}>Loading...</div>}
+      {httpError && <div className={classes.error}>{httpError}</div>}
+      {!isLoading && !httpError && (
+        <div className={`${classes.items} side-padding`}>{preBuiltItem}</div>
+      )}
     </div>
   );
 };

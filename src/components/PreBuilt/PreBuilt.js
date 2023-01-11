@@ -3,11 +3,11 @@ import { Fragment } from "react";
 import AvailablePreBuilt from "./AvailablePreBuilt";
 import PreBuiltSummary from "./PreBuiltSummary";
 
-const PreBuilt = () => {
+const PreBuilt = (props) => {
   return (
     <Fragment>
       <PreBuiltSummary />
-      <AvailablePreBuilt />
+      <AvailablePreBuilt onShowCart={props.onShowCart} />
     </Fragment>
   );
 };

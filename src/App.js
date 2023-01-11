@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Header from "./components/Layout/Header";
 import PreBuilt from "./components/PreBuilt/PreBuilt";
@@ -16,11 +16,19 @@ function App() {
     setShowCart(false);
   };
 
+  useEffect(() => {
+    if (showCart) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [showCart]);
+
   return (
     <CartProvider>
       {showCart && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
-      <PreBuilt />
+      <PreBuilt onShowCart={showCartHandler} />
     </CartProvider>
   );
 }

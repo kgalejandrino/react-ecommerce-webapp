@@ -11,7 +11,7 @@ const PreBuiltItemForm = (props) => {
 
   return (
     <form className={classes.cart} onSubmit={submitHandler}>
-      <button>Add to Cart</button>
+      <button onClick={props.onShowCart}>Add to Cart</button>
     </form>
   );
 };

@@ -1,11 +1,36 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 import classes from "./AvailablePreBuilt.module.css";
 import PreBuiltItem from "./PreBuiltItem/PreBuiltItem";
-import data from "../../DUMMY_DATA";
 
-const AvailablePreBuilt = () => {
-  const preBuiltItem = data.map((item) => (
+const AvailablePreBuilt = (props) => {
+  const [prebuilt, setPrebuilt] = useState([]);
+
+  useEffect(() => {
+    const fetchPrebuilt = async () => {
+      const response = await fetch(
+        "https://react-ecommerce-pcbuilds-default-rtdb.firebaseio.com/prebuilt.json"
+      );
+      const data = await response.json();
+
+      const loadedPrebuilt = [];
+
+      for (const key in data) {
+        loadedPrebuilt.push({
+          id: key,
+          name: data[key].name,
+          img: data[key].img,
+          cpu: data[key].cpu,
+          gpu: data[key].gpu,
+          price: data[key].price,
+        });
+      }
+      setPrebuilt(loadedPrebuilt);
+    };
+    fetchPrebuilt();
+  }, []);
+
+  const preBuiltItem = prebuilt.map((item) => (
     <PreBuiltItem
       key={item.id}
       id={item.id}
@@ -14,6 +39,7 @@ const AvailablePreBuilt = () => {
       cpu={item.cpu}
       gpu={item.gpu}
       price={item.price}
+      onShowCart={props.onShowCart}
     />
   ));
 

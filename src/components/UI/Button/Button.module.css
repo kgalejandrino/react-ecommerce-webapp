@@ -11,11 +11,3 @@
 .secondary { background-color: #1f1f1f; }
 
 .secondary:hover { background-color: #3b3b3b; }
-
-button:disabled,
-button[disabled],
-button[disabled]:hover{
-  background-color: #f5f5f5;
-  color: rgb(204, 204, 204);
-  cursor: default;
-}

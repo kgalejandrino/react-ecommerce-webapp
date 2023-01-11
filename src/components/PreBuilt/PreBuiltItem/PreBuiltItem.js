@@ -30,7 +30,10 @@ const PreBuiltItem = (props) => {
         <p>{props.gpu}</p>
       </div>
       <p className={classes.price}>{price}</p>
-      <PreBuiltItemForm onAddToCart={addToCartHandler} />
+      <PreBuiltItemForm
+        onAddToCart={addToCartHandler}
+        onShowCart={props.onShowCart}
+      />
     </li>
   );
 };

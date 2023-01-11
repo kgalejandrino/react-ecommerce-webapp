@@ -101,7 +101,7 @@ const product_card = [
     ram: "CORSAIR Vengeance RGB Pro 32GB (2 x 16GB) 288-Pin DDR4 SDRAM DDR4 3200",
     ssd: "2TB Intel 670p Series M.2 2280 PCI-Express 3.0 x4 QLC",
     cpu_cooler: "280mm Radiator, Dual ML140 RGB PWM",
-    psu: " 850W 80 PLUS GOLD",
+    psu: "850W 80 PLUS GOLD",
     case: "LIAN LI PC-O11 Dynamic Black Tempered Glass ATX Mid Tower",
     os: "Windows 10 PRO 64-bit",
     dimension: '17.70" x 10.80" x 17.70"',

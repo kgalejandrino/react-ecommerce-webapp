@@ -1,0 +1,39 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.item-details {
+    display: flex;
+}
+
+.img-container {
+    width: 90px;
+    background-color: #e0e0e0;
+    padding: 8px 0;
+    margin-right: 12px;
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+}
+
+.item-desc {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-desc h5{
+    text-transform: uppercase;
+}
+
+.item-desc span {
+    color: #6e6e6e;
+    font-size: 0.75rem;
+    margin-top: 6px;
+}
+
+.price { font-weight: bold;}

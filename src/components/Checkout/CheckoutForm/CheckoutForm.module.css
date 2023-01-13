@@ -1,0 +1,44 @@
+.form-container {
+    width: 700px;
+    margin: 0 32px;
+}
+
+/* Form links */
+.checkout-links {
+    display: flex;
+    color: #6e6e6e;
+    margin-bottom: 1.5em;
+}
+
+.checkout-links li {
+    font-size: 0.875em;
+}
+
+.checkout-links li::after {
+    content: '>';
+    padding: 0 8px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+} 
+
+/* Form Footer */
+.form-footer {
+    margin-top: 24px;
+}
+
+.form-footer span {
+    color: #6e6e6e;
+    padding-right: 6px;
+    cursor: pointer;
+}
+
+.form-footer span a {
+    margin-left: 6px;
+}
+
+.form-footer button {
+    width: 180px;
+}

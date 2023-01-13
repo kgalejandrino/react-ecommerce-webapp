@@ -4,6 +4,7 @@ import Header from "./components/Layout/Header";
 import PreBuilt from "./components/PreBuilt/PreBuilt";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
+import Checkout from "./components/Checkout/Checkout";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -26,9 +27,10 @@ function App() {
 
   return (
     <CartProvider>
-      {showCart && <Cart onClose={hideCartHandler} />}
+      {/* {showCart && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
-      <PreBuilt onShowCart={showCartHandler} />
+      <PreBuilt onShowCart={showCartHandler} /> */}
+      <Checkout />
     </CartProvider>
   );
 }

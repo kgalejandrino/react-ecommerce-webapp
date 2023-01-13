@@ -28,16 +28,21 @@ button[disabled]:hover{
   cursor: default !important;
 }
 
+a {
+  color: inherit;
+}
+
 .side-padding {
-  padding: 0 10%;
+  padding: 0 140px;
 }
 
 .top-padding {
-  padding-top: 6rem;
+  padding-top: 96px;
 }
 
 .flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }

@@ -1,0 +1,46 @@
+.section {
+    margin-top: 36px;
+}
+
+.title {
+    font-weight: 500;
+}
+
+.account {
+    color: #6e6e6e;
+}
+
+.account a {
+    text-decoration: underline;
+}
+
+.firstName, .lastName {
+    width: 45%;
+}
+
+.form-control {
+    position: relative;
+    margin-top: 12px;
+}
+
+.form-control label {
+    position: absolute;
+    font-size: 12px;
+    color: #6e6e6e;
+    padding-left: 12px;
+    padding-top: 4px;
+}
+.country, .state { 
+    width: 32%; 
+}
+
+.country select, 
+.state select {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #ccc;
+    padding-top: 12px;
+    padding-left: 8px;
+    color: #333;
+    font-size: 14px;
+}

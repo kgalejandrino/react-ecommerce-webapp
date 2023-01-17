@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import classes from "./Navigations.module.css";
 
@@ -6,13 +7,19 @@ const Navigations = () => {
   return (
     <ul className={classes.navigations}>
       <li>
-        <a href="#">Build A PC</a>
+        <NavLink activeClassName={classes.active} to="/build-a-pc">
+          Build A PC
+        </NavLink>
       </li>
       <li>
-        <a href="#">Pre-Built PC</a>
+        <NavLink activeClassName={classes.active} to="/pre-built">
+          Pre-Built PC
+        </NavLink>
       </li>
       <li>
-        <a href="#">Support</a>
+        <NavLink activeClassName={classes.active} to="/support">
+          Support
+        </NavLink>
       </li>
     </ul>
   );

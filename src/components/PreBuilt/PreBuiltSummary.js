@@ -6,7 +6,7 @@ import bannerImg from "../../assets/prebuilt-banner-img.png";
 
 const PreBuiltSummary = () => {
   return (
-    <div className={`${classes.banner} top-padding`}>
+    <div className={classes.banner}>
       <div className={classes["banner-image"]}>
         <img src={bannerImg} alt="3 PC Tower with rgb colors" />
       </div>

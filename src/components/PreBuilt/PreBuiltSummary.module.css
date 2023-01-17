@@ -5,9 +5,7 @@
     background-position: 50%;
     display: flex;
     justify-content: space-between;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    margin-bottom: 4em;
+    padding: 64px;
 }
 
 /* PreBuilt Banner Image */

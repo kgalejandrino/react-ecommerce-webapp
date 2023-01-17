@@ -12,3 +12,11 @@
     color: #fff;
     text-decoration: none;
 }
+
+.navigations li a.active,
+.navigations li a:hover, 
+.navigations li a:active {
+    border-bottom: 1px solid #fff;
+    border-width: 2px;
+    padding-bottom: 4px;
+}

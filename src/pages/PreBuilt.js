@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
-import AvailablePreBuilt from "./AvailablePreBuilt";
-import PreBuiltSummary from "./PreBuiltSummary";
+import AvailablePreBuilt from "../components/PreBuilt/AvailablePreBuilt";
+import PreBuiltSummary from "../components/PreBuilt/PreBuiltSummary";
 
 const PreBuilt = (props) => {
   return (

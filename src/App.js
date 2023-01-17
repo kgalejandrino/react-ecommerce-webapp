@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import { Redirect, Switch, Route } from "react-router-dom";
 
-import Header from "./components/Layout/Header";
-import PreBuilt from "./components/PreBuilt/PreBuilt";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
-import Checkout from "./components/Checkout/Checkout";
+import Layout from "./components/Layout/Layout";
+import Home from "./pages/Home";
+import PreBuilt from "./pages/PreBuilt";
+import BuildPc from "./pages/BuildPc";
+import Support from "./pages/Support";
+import "./App.css";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -27,10 +31,20 @@ function App() {
 
   return (
     <CartProvider>
-      {/* {showCart && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} />
-      <PreBuilt onShowCart={showCartHandler} /> */}
-      <Checkout />
+      <Switch>
+        <Route>
+          <Layout onShowCart={showCartHandler}>
+            {showCart && <Cart onClose={hideCartHandler} />}
+            <Route path="/" exact component={Home} />
+            <Route path="/build-a-pc" component={BuildPc} />
+            <Route
+              path="/pre-built"
+              component={() => <PreBuilt onShowCart={showCartHandler} />}
+            />
+            <Route path="/support" component={Support} />
+          </Layout>
+        </Route>
+      </Switch>
     </CartProvider>
   );
 }

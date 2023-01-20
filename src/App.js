@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Redirect, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import PreBuilt from "./pages/PreBuilt";
 import BuildPc from "./pages/BuildPc";
 import Support from "./pages/Support";
+import PreBuiltDetail from "./pages/PreBuiltDetail";
 import "./App.css";
 
 function App() {
@@ -39,8 +40,10 @@ function App() {
             <Route path="/build-a-pc" component={BuildPc} />
             <Route
               path="/pre-built"
+              exact
               component={() => <PreBuilt onShowCart={showCartHandler} />}
             />
+            <Route path="/pre-built/:prebuilt_id" component={PreBuiltDetail} />
             <Route path="/support" component={Support} />
           </Layout>
         </Route>

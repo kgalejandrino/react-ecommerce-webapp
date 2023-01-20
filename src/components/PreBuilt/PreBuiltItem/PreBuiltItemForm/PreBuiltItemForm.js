@@ -1,17 +1,21 @@
 import React from "react";
 
 import classes from "./PreBuiltItemForm.module.css";
+import Button from "../../../UI/Button/Button";
 
 const PreBuiltItemForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    props.onShowCart();
     props.onAddToCart(1);
   };
 
   return (
     <form className={classes.cart} onSubmit={submitHandler}>
-      <button onClick={props.onShowCart}>Add to Cart</button>
+      <Button btnType="btnCart" round="round">
+        Add to Cart
+      </Button>
     </form>
   );
 };

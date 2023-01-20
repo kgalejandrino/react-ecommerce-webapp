@@ -1,27 +1,18 @@
 import { useEffect, useState } from "react";
+import useHttp from "../../hooks/use-http";
 
 import classes from "./AvailablePreBuilt.module.css";
 import PreBuiltItem from "./PreBuiltItem/PreBuiltItem";
+import Spinner from "../UI/Spinner/Spinner";
 
 const AvailablePreBuilt = (props) => {
   const [prebuilt, setPrebuilt] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [httpError, setHttpError] = useState(null);
+
+  const { isLoading, httpError, fetchData } = useHttp();
 
   useEffect(() => {
-    const fetchPrebuilt = async () => {
-      const response = await fetch(
-        "https://react-ecommerce-pcbuilds-default-rtdb.firebaseio.com/prebuilt.json"
-      );
-
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-
-      const data = await response.json();
-
+    const transformData = (data) => {
       const loadedPrebuilt = [];
-
       for (const key in data) {
         loadedPrebuilt.push({
           id: key,
@@ -33,14 +24,9 @@ const AvailablePreBuilt = (props) => {
         });
       }
       setPrebuilt(loadedPrebuilt);
-      setIsLoading(false);
     };
-
-    fetchPrebuilt().catch((error) => {
-      setIsLoading(false);
-      setHttpError(error.message);
-    });
-  }, []);
+    fetchData(transformData);
+  }, [fetchData]);
 
   const preBuiltItem = prebuilt.map((item) => (
     <PreBuiltItem
@@ -58,15 +44,15 @@ const AvailablePreBuilt = (props) => {
   return (
     <div className={classes.prebuilt}>
       <h1 className={classes.title}>Pre-Built PC</h1>
-      <div className={`${classes.flex} side-padding`}>
+      <div className={`${classes.filter} flex side-padding`}>
         <span>Showing 1-9 of 20 results</span>
         <select className={classes.sort}>
           <option value="low">Sort by price: low to high</option>
           <option value="high">Sort by price: high to low</option>
         </select>
       </div>
-      {isLoading && <div className={classes.loading}>Loading...</div>}
-      {httpError && <div className={classes.error}>{httpError}</div>}
+      {isLoading && <Spinner />}
+      {httpError && <div className="error">{httpError}</div>}
       {!isLoading && !httpError && (
         <div className={`${classes.items} side-padding`}>{preBuiltItem}</div>
       )}

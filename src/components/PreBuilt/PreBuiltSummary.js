@@ -19,9 +19,7 @@ const PreBuiltSummary = () => {
         </p>
         <div className={classes["customize-flex"]}>
           <p>Want full control in customizing your dream pc setup?</p>
-          <Button btnType="primary" disabled={true}>
-            Build Now
-          </Button>
+          <Button btnType="primary">Build Now</Button>
         </div>
       </div>
     </div>

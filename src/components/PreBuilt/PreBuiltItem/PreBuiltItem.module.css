@@ -41,3 +41,8 @@
     color: #fe5a1d;
     font-size: 1.75rem;
 }
+
+.item:hover button {
+    background-color: #fe5a1d;
+    color: #fff;
+}

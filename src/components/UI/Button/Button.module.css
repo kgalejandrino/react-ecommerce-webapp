@@ -12,4 +12,10 @@
 
 .secondary:hover { background-color: #3b3b3b; }
 
+.btnCart {
+    color: #b9b9b9;
+    background-color: #46464680;
+    width: 50%;
+}
+
 .round { border-radius: 25px; }

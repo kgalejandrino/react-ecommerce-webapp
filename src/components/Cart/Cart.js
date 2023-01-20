@@ -63,12 +63,10 @@ const Cart = (props) => {
         <p>{totalAmount}</p>
       </div>
       <div className={classes["cart-btns"]}>
-        {hasItems && (
-          <Button btnType="primary" disabled={hasItems}>
-            View Cart
-          </Button>
-        )}
-        <Button btnType="secondary" disabled={hasItems}>
+        <Button btnType="primary" disabled={!hasItems}>
+          View Cart
+        </Button>
+        <Button btnType="secondary" disabled={!hasItems}>
           Checkout
         </Button>
       </div>

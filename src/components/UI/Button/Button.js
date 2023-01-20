@@ -3,7 +3,7 @@ import classes from "./Button.module.css";
 const Button = (props) => {
   return (
     <button
-      disabled={!props.disabled}
+      disabled={props.disabled ? true : false}
       className={`${classes.btn} ${classes[props.btnType]} ${
         classes[props.round]
       }`}

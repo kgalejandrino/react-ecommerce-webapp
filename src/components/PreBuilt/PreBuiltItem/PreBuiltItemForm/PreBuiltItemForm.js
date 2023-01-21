@@ -13,7 +13,7 @@ const PreBuiltItemForm = (props) => {
 
   return (
     <form className={classes.cart} onSubmit={submitHandler}>
-      <Button btnType="btnCart" round="round">
+      <Button btnType={props.btnType} round="round">
         Add to Cart
       </Button>
     </form>

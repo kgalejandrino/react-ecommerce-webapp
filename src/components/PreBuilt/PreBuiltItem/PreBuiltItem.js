@@ -36,6 +36,7 @@ const PreBuiltItem = (props) => {
       <PreBuiltItemForm
         onAddToCart={addToCartHandler}
         onShowCart={props.onShowCart}
+        btnType="btnCart"
       />
     </li>
   );

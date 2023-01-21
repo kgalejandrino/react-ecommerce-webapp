@@ -1,0 +1,133 @@
+/* SECTION: HERO IMG */
+.section-hero--img {
+    background-image: linear-gradient(rgba(59,59,59,.3),rgba(0,0,0,.4)),url('../../assets/hero-img.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50%;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-textbox h2 {
+    color: #b9b9b9;
+    margin-bottom: 18px;
+}
+
+.hero-textbox h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.hero-textbox button {
+    width: 140px;
+    margin-top: 16px;
+}
+
+/* SECTION: INFO */
+.section-info {
+    margin: 64px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-container {
+    width: 40%;
+    /* border: 1px solid red; */
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+}
+.info-textbox {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-textbox h1 {
+    font-size: 2.5rem;
+}
+
+.info-textbox p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 28px;
+    margin-top: 18px;
+}
+
+/* SECTION: GALLERY */
+.section-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #000;
+}
+
+.section-gallery figure {
+    width: 25%;
+    overflow: hidden;
+}
+
+.section-gallery figure img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    transform: scale(1.1);
+    transition: transform 0.3s, opacity 0.3s ease-in;
+}
+
+.section-gallery figure img:hover {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* SECTION: SERVICES */
+.section-services {  margin: 64px 0; }
+
+.section-services h1 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.section-services p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 32px;
+}
+
+.services-text {
+    margin: 36px 0;
+}
+
+.card-services {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-services li {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-services li span {
+    font-size: 1.5rem;
+    background-color: #ff1e20;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.card-services li h3 { 
+    text-transform: uppercase;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.card-services li p { text-align: center;}

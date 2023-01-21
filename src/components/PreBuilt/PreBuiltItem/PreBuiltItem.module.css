@@ -46,3 +46,8 @@
     background-color: #fe5a1d;
     color: #fff;
 }
+
+.item button:hover { 
+    background-color: #d8430d !important;
+    transition: background-color 0.3s;
+}

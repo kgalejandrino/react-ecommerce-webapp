@@ -43,7 +43,10 @@ function App() {
               exact
               component={() => <PreBuilt onShowCart={showCartHandler} />}
             />
-            <Route path="/pre-built/:prebuilt_id" component={PreBuiltDetail} />
+            <Route
+              path="/pre-built/:prebuilt_id"
+              component={() => <PreBuiltDetail onShowCart={showCartHandler} />}
+            />
             <Route path="/support" component={Support} />
           </Layout>
         </Route>

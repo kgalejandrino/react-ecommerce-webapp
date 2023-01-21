@@ -2,7 +2,6 @@
     margin-top: 1rem;
 }
 
-.cart button:hover { 
-    background-color: #d8430d !important;
-    transition: background-color 0.3s;
+.cart button {
+    width: 220px;
 }

@@ -4,7 +4,9 @@
     font-size: 1rem;
 }
 
-.primary { background-color: #ff1e20; }
+.primary { 
+    background-color: #ff1e20; 
+}
 
 .primary:hover { background-color: #d11a1d; }
 
@@ -15,7 +17,6 @@
 .btnCart {
     color: #b9b9b9;
     background-color: #46464680;
-    width: 50%;
 }
 
 .round { border-radius: 25px; }

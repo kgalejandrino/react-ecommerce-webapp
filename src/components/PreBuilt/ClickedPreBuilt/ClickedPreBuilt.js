@@ -1,16 +1,18 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, useContext, Fragment } from "react";
 import { useParams } from "react-router-dom";
 
-import classes from "./ClickedPreBuilt.module.css";
-import img from "../../../assets/pre-built1.png";
-import useHttp from "../../../hooks/use-http";
+import ClickedPreBuiltDetails from "./ClickedPreBuiltDetails";
+import PreBuiltItemForm from "../PreBuiltItem/PreBuiltItemForm/PreBuiltItemForm";
+import CartContext from "../../../store/cart-context";
 import Spinner from "../../UI/Spinner/Spinner";
+import useHttp from "../../../hooks/use-http";
+import classes from "./ClickedPreBuilt.module.css";
 
-const ClickedPreBuilt = () => {
+const ClickedPreBuilt = (props) => {
   const [prebuilt, setPrebuilt] = useState([]);
   const { isLoading, httpError, fetchData } = useHttp();
-
   const params = useParams();
+  const cartCtx = useContext(CartContext);
 
   useEffect(() => {
     const transformData = (data) => {
@@ -40,53 +42,33 @@ const ClickedPreBuilt = () => {
 
   const clickedItem = prebuilt.find((item) => item.name === params.prebuilt_id);
 
+  const addToCartHandler = (amount) => {
+    cartCtx.addItem({
+      id: clickedItem.id,
+      name: clickedItem.name,
+      img: clickedItem.img,
+      cpu: clickedItem.cpu,
+      gpu: clickedItem.gpu,
+      price: clickedItem.price,
+      amount: amount,
+    });
+  };
+
   let loadItem;
 
   if (clickedItem) {
     loadItem = (
       <Fragment>
         <div className={classes["img-container"]}>
-          <img src={img} alt="test" />
+          <img src={clickedItem.img} alt="test" />
         </div>
         <div className={classes["item-details"]}>
-          <h3
-            className={classes.name}
-          >{`${clickedItem.name} - ${clickedItem.cpu}, ${clickedItem.gpu}`}</h3>
-          <p className={classes.price}>{`$${clickedItem.price}`}</p>
-          <div className={classes.specs}>
-            <li>
-              <span>Motherboard:</span>
-              <span>{clickedItem.motherboard}</span>
-            </li>
-            <li>
-              <span>Ram:</span>
-              <span>{clickedItem.ram}</span>
-            </li>
-            <li>
-              <span>SSD:</span>
-              <span>{clickedItem.ssd}</span>
-            </li>
-            <li>
-              <span>Cpu Cooler:</span>
-              <span>{clickedItem.cpu_cooler}</span>
-            </li>
-            <li>
-              <span>Power Supply:</span>
-              <span>{clickedItem.psu}</span>
-            </li>
-            <li>
-              <span>Case:</span>
-              <span>{clickedItem.case}</span>
-            </li>
-            <li>
-              <span>Operating System:</span>
-              <span>{clickedItem.os}</span>
-            </li>
-            <li>
-              <span>Dimension:</span>
-              <span>{clickedItem.dimension}</span>
-            </li>
-          </div>
+          <ClickedPreBuiltDetails item={clickedItem} />
+          <PreBuiltItemForm
+            onAddToCart={addToCartHandler}
+            onShowCart={props.onShowCart}
+            btnType="primary"
+          />
         </div>
       </Fragment>
     );

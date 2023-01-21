@@ -4,38 +4,10 @@
 }
 
 .img-container {
-    /* flex-shrink: 0; */
+    flex-shrink: 0;
 }
 
 .img-container img {
     width: 100%;
 }
 
-.item-details {
-    /* width: 60%; */
-}
-
-.name {
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 12px;
-}
-
-.price {
-    color: #ff1e20;
-    font-size: 1.5em;
-    font-weight: 700;
-    margin: 18px 0;
-}
-
-.specs li { 
-    margin-bottom: 8px;
-}
-
-.specs li span:first-child {
-    font-weight: 700;
-    margin-right: 6px;
-}
-.specs li span:last-child { 
-    color: #535353;
-    font-size: 0.9rem;
-}

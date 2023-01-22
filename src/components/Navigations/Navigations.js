@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 
 import classes from "./Navigations.module.css";
 
-const Navigations = () => {
+const Navigations = (props) => {
   return (
-    <ul className={classes.navigations}>
+    <ul className={`${classes[props.nav]}`}>
       <li>
         <NavLink activeClassName={classes.active} to="/build-a-pc">
-          Build A PC
+          Build a PC
         </NavLink>
       </li>
       <li>

@@ -1,22 +1,33 @@
-.navigations {
+/* Main Navigation */
+.main-nav {
     display: flex;
 }
 
-.navigations li {
+.main-nav li {
     list-style-type: none;
     margin: 0 1em;
 }
 
-.navigations li a {
+.main-nav li a {
     text-transform: uppercase;
     color: #fff;
     text-decoration: none;
 }
 
-.navigations li a.active,
-.navigations li a:hover, 
-.navigations li a:active {
+.main-nav li a.active,
+.main-nav li a:hover, 
+.main-nav li a:active {
     border-bottom: 1px solid #fff;
     border-width: 2px;
     padding-bottom: 4px;
+}
+
+/* Footer Navigation */
+.footer-nav li {
+    margin-bottom: 8px;
+}
+
+.footer-nav li a:hover {
+    cursor: pointer;
+    color: #ff1e20;
 }

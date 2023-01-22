@@ -11,7 +11,7 @@ const Header = (props) => {
       <div className={classes["logo-container"]}>
         <img src={mainLogo} alt="Nemirk PC Logo" />
       </div>
-      <Navigations />
+      <Navigations nav="main-nav" />
       <HeaderCartButton onClick={props.onShowCart} />
     </header>
   );

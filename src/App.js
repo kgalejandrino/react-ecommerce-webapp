@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 
 import CartProvider from "./store/CartProvider";
 import SideCart from "./components/Cart/SideCart/SideCart";
@@ -33,27 +33,31 @@ function App() {
 
   return (
     <CartProvider>
-      <Switch>
-        <Route path="/checkout" component={Checkout} />
-        <Route>
-          <Layout onShowCart={showCartHandler}>
-            {showCart && <SideCart onClose={hideCartHandler} />}
-            <Route path="/" exact component={Home} />
-            <Route path="/build-a-pc" component={BuildPc} />
-            <Route
-              path="/pre-built"
-              exact
-              component={() => <PreBuilt onShowCart={showCartHandler} />}
-            />
-            <Route
-              path="/pre-built/:prebuilt_id"
-              component={() => <PreBuiltDetail onShowCart={showCartHandler} />}
-            />
-            <Route path="/support" component={Support} />
-            <Route path="/cart" component={Cart} />
-          </Layout>
-        </Route>
-      </Switch>
+      <HashRouter basename="/">
+        <Switch>
+          <Route path="/checkout" component={Checkout} />
+          <Route>
+            <Layout onShowCart={showCartHandler}>
+              {showCart && <SideCart onClose={hideCartHandler} />}
+              <Route path="/" exact component={Home} />
+              <Route path="/build-a-pc" component={BuildPc} />
+              <Route
+                path="/pre-built"
+                exact
+                component={() => <PreBuilt onShowCart={showCartHandler} />}
+              />
+              <Route
+                path="/pre-built/:prebuilt_id"
+                component={() => (
+                  <PreBuiltDetail onShowCart={showCartHandler} />
+                )}
+              />
+              <Route path="/support" component={Support} />
+              <Route path="/cart" component={Cart} />
+            </Layout>
+          </Route>
+        </Switch>
+      </HashRouter>
     </CartProvider>
   );
 }

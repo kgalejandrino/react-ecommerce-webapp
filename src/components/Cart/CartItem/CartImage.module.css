@@ -1,0 +1,17 @@
+/* Side Cart Item Image */
+.cart {
+    background-color: #e0e0e0;
+    padding: 8px;
+}
+.side-cart {
+    width: 40%;
+}
+
+.main-cart {
+    width: 140px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}

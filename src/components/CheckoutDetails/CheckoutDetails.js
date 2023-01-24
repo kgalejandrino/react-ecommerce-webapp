@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./Checkout.module.css";
+import classes from "./CheckoutDetails.module.css";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
 import CheckoutSummary from "./CheckoutSummary/CheckoutSummary";
 

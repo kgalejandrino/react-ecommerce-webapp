@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
+import SideCart from "./components/Cart/SideCart/SideCart";
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home";
 import PreBuilt from "./pages/PreBuilt";
+import PreBuiltDetail from "./pages/PreBuiltDetail";
 import BuildPc from "./pages/BuildPc";
 import Support from "./pages/Support";
-import PreBuiltDetail from "./pages/PreBuiltDetail";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import "./App.css";
 
 function App() {
@@ -35,7 +37,7 @@ function App() {
       <Switch>
         <Route>
           <Layout onShowCart={showCartHandler}>
-            {showCart && <Cart onClose={hideCartHandler} />}
+            {showCart && <SideCart onClose={hideCartHandler} />}
             <Route path="/" exact component={Home} />
             <Route path="/build-a-pc" component={BuildPc} />
             <Route
@@ -48,6 +50,8 @@ function App() {
               component={() => <PreBuiltDetail onShowCart={showCartHandler} />}
             />
             <Route path="/support" component={Support} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/checkout" component={Checkout} />
           </Layout>
         </Route>
       </Switch>

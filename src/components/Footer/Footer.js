@@ -1,25 +1,25 @@
 import classes from "./Footer.module.css";
 
-import logo from "../../assets/white-main-logo.png";
 import Navigations from "../Navigations/Navigations";
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
+import Logo from "../Logo/Logo";
 
 const Footer = () => {
   return (
     <footer className={`${classes.footer} side-padding`}>
       <div className={classes["footer-body"]}>
         <div className={`${classes["footer-card"]} ${classes.socials}`}>
-          <img src={logo} alt="Nemirk PC logo" />
+          <Logo />
           <p>
             Not your typical pc build. We believed building pc is art and every
             build is treated as such.
           </p>
           <span>
-            <i class="fab fa-facebook-square" aria-hidden="true"></i>
+            <i className="fab fa-facebook-square" aria-hidden="true"></i>
           </span>
           <span>
-            <i class="fab fa-instagram-square" aria-hidden="true"></i>
+            <i className="fab fa-instagram-square" aria-hidden="true"></i>
           </span>
         </div>
         <div className={`${classes["footer-card"]} ${classes.links}`}>

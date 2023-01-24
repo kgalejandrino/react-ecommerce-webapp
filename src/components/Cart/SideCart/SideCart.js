@@ -65,7 +65,7 @@ const Cart = (props) => {
             View Cart
           </Button>
         </Link>
-        <Link to="/checkout">
+        <Link to="/checkout/information" onClick={props.onClose}>
           <Button btnType="secondary" disabled={!hasItems}>
             Checkout
           </Button>

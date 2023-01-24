@@ -19,6 +19,13 @@
     padding: 0 8px;
 }
 
+.checkout-links li a:hover,
+.checkout-links li a:active,
+.checkout-links li a.active {
+    color: #1f1f1f;
+    font-weight: 700;
+}
+
 .logo {
     width: 200px;
     height: auto;

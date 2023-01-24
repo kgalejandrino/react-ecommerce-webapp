@@ -11,7 +11,6 @@ import BuildPc from "./pages/BuildPc";
 import Support from "./pages/Support";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import "./App.css";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -35,6 +34,7 @@ function App() {
   return (
     <CartProvider>
       <Switch>
+        <Route path="/checkout" component={Checkout} />
         <Route>
           <Layout onShowCart={showCartHandler}>
             {showCart && <SideCart onClose={hideCartHandler} />}
@@ -51,7 +51,6 @@ function App() {
             />
             <Route path="/support" component={Support} />
             <Route path="/cart" component={Cart} />
-            <Route path="/checkout" component={Checkout} />
           </Layout>
         </Route>
       </Switch>

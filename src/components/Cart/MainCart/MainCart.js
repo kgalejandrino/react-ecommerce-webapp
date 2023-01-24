@@ -66,11 +66,11 @@ const MainCart = () => {
       <div className="flex">
         <Link to="/pre-built" className={classes.link}>
           <span>
-            <i class="far fa-hand-point-left" aria-hidden="true"></i>Continue
-            Shopping
+            <i className="far fa-hand-point-left" aria-hidden="true"></i>
+            Continue Shopping
           </span>
         </Link>
-        <Link to="/checkout" className={classes.checkout}>
+        <Link to="/checkout/information" className={classes.checkout}>
           <Button btnType="secondary" round="round">
             Checkout
           </Button>

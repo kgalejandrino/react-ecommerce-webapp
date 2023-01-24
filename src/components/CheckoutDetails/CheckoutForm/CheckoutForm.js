@@ -40,7 +40,7 @@ const CheckoutForm = () => {
       <div className={`${classes["form-footer"]} flex`}>
         <span>
           <i class="far fa-hand-point-left" aria-hidden="true"></i>
-          <a>Return to cart</a>
+          <a href="#return">Return to cart</a>
         </span>
         <Button btnType="secondary" disabled="True" round="round">
           Continue Shipping

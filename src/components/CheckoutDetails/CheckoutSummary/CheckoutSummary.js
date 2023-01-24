@@ -1,9 +1,8 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 
 import classes from "./CheckoutSummary.module.css";
 import CartContext from "../../../store/cart-context";
 import CheckoutItem from "../CheckoutSummary/CheckoutItem";
-import Input from "../../UI/Input/Input";
 import Button from "../../UI/Button/Button";
 
 const CheckoutSummary = () => {
@@ -15,9 +14,7 @@ const CheckoutSummary = () => {
 
   return (
     <div className={classes.summary}>
-      <ul className={classes["item-lists"]}>
-        <CheckoutItem />
-      </ul>
+      <ul className={classes["item-lists"]}>{cartItems}</ul>
       <div className={classes.coupon}>
         <input type="text" id="coupon" placeholder="Enter promo code" />
         <Button btnType="secondary" round="round" disabled="True">

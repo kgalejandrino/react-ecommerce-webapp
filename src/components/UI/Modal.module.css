@@ -13,13 +13,12 @@
     top: 0;
     right: 0;
     background-color: #fff;
-    max-width: 100%;
     width: 400px;
     height: 100vh;
     z-index: 30;
     animation: slide-in 0.3s ease-in;
     overflow-y: auto;
-    padding: 0 1rem;
+    padding: 0 16px;
 }
 
 @keyframes slide-in {

@@ -8,8 +8,20 @@ import Button from "../../UI/Button/Button";
 const CheckoutSummary = () => {
   const cartCtx = useContext(CartContext);
 
+  const subTotal = cartCtx.totalAmount.toFixed(2);
+  const tax = (subTotal * 0.0725).toFixed(2);
+  const total = (+subTotal + +tax).toFixed(2);
+
   const cartItems = cartCtx.items.map((item) => {
-    return <CheckoutItem />;
+    return (
+      <CheckoutItem
+        img={item.img}
+        name={item.name}
+        cpu={item.cpu}
+        gpu={item.gpu}
+        price={item.price}
+      />
+    );
   });
 
   return (
@@ -24,7 +36,7 @@ const CheckoutSummary = () => {
       <div className={classes["order-receipt"]}>
         <div className={`${classes["text-receipt"]} flex`}>
           <span>Subtotal</span>
-          <span>$2199.99</span>
+          <span>{`$${subTotal}`}</span>
         </div>
         <div className={`${classes["text-receipt"]} flex`}>
           <span>Shipping</span>
@@ -32,12 +44,12 @@ const CheckoutSummary = () => {
         </div>
         <div className={`${classes["text-receipt"]} flex`}>
           <span>Taxes(estimated)</span>
-          <span>$159.90</span>
+          <span>{`$${tax}`}</span>
         </div>
       </div>
       <div className={`${classes["text-receipt"]} flex`}>
         <span>Total</span>
-        <span className={classes.total}>$2359.99</span>
+        <span className={classes.total}>{`$${total}`}</span>
       </div>
     </div>
   );

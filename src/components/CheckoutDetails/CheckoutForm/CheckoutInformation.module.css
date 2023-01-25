@@ -2,6 +2,11 @@
     margin-top: 36px;
 }
 
+.section-flex {
+    display: flex;    
+    justify-content: space-between;
+}
+
 .title {
     font-weight: 500;
 }
@@ -43,4 +48,11 @@
     padding-left: 8px;
     color: #333;
     font-size: 14px;
+    outline: none;
+}
+
+.error {
+    margin-top: 6px;
+    font-size: 0.875rem;
+    color: #d8000c;
 }

@@ -10,4 +10,15 @@
     padding-left: 12px;
     color: #333;
     font-size: 14px;
+    outline: none;
+}
+
+.form-control input.error {
+    color: #d8000c;
+    border-color: #d8000c;
+    background-color: #FFBABA;
+}
+
+.form-control input.error::placeholder {
+    color: #d8000c;
 }

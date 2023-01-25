@@ -6,9 +6,13 @@
 .main-content {
     width: 48%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: end;
 }
 
+.form-container {
+    width: 700px;
+    margin: 0 32px;
+}
 .side-content {
     width: 48%;
 }

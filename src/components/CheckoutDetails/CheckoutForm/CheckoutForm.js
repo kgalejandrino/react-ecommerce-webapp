@@ -1,52 +1,40 @@
-import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { Fragment, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 import classes from "./CheckoutForm.module.css";
 import CheckoutInformation from "./CheckoutInformation";
-import logo from "../../../assets/black-logo.png";
 import Button from "../../UI/Button/Button";
+import CheckoutShipping from "./CheckoutShipping";
 
 const CheckoutForm = () => {
-  const location = useLocation();
-  const history = useHistory();
+  const params = useParams();
+  const [formIsValid, setFormIsValid] = useState(false);
 
-  console.log(location);
-  console.log(history);
+  const validateForm = () => {
+    setFormIsValid(true);
+  };
+
+  const renderForm = <CheckoutInformation validate={validateForm} />;
+
+  if (params.link_id === "shipping") {
+    renderForm = <CheckoutShipping />;
+  }
+
   return (
-    <div className={classes["form-container"]}>
-      <ul className={classes["checkout-links"]}>
-        <li>
-          <NavLink activeClassName={classes.active} to="/cart">
-            Cart
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName={classes.active} to="/checkout/information">
-            Information
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName={classes.active} to="/checkout/shipping">
-            Shipping
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName={classes.active} to="/checkout/payment">
-            Payment
-          </NavLink>
-        </li>
-      </ul>
-      <img src={logo} alt={"Nemirk pc logo"} className={classes.logo} />
-      <CheckoutInformation />
+    <Fragment>
+      {renderForm}
       <div className={`${classes["form-footer"]} flex`}>
         <span>
-          <i class="far fa-hand-point-left" aria-hidden="true"></i>
+          <i className="far fa-hand-point-left" aria-hidden="true"></i>
           <a href="#return">Return to cart</a>
         </span>
-        <Button btnType="secondary" disabled="True" round="round">
-          Continue Shipping
-        </Button>
+        <Link to="/checkout/shipping">
+          <Button btnType="secondary" round="round" disabled={!formIsValid}>
+            Continue Shipping
+          </Button>
+        </Link>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

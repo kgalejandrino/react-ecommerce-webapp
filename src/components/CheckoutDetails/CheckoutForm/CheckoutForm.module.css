@@ -1,36 +1,3 @@
-.form-container {
-    width: 700px;
-    margin: 0 32px;
-}
-
-/* Form links */
-.checkout-links {
-    display: flex;
-    color: #6e6e6e;
-    margin-bottom: 1.5em;
-}
-
-.checkout-links li {
-    font-size: 0.875em;
-}
-
-.checkout-links li::after {
-    content: '>';
-    padding: 0 8px;
-}
-
-.checkout-links li a:hover,
-.checkout-links li a:active,
-.checkout-links li a.active {
-    color: #1f1f1f;
-    font-weight: 700;
-}
-
-.logo {
-    width: 200px;
-    height: auto;
-} 
-
 /* Form Footer */
 .form-footer {
     margin-top: 24px;

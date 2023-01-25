@@ -9,9 +9,16 @@ const Input = (props) => {
       className={classes["form-control"]}
       style={props.width ? { width: props.width } : { width: width }}
     >
-      <input type={props.type} id={props.id} placeholder={props.placeholder}>
-        {props.children}
-      </input>
+      <input
+        type={props.type}
+        id={props.id}
+        placeholder={props.placeholder}
+        value={props.value}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        className={props.error ? classes.error : ""}
+      />
+      {props.children}
     </div>
   );
 };

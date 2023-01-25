@@ -34,7 +34,7 @@ function App() {
   return (
     <CartProvider>
       <Switch>
-        <Route path="/checkout" component={Checkout} />
+        <Route path="/checkout/:link_id" component={Checkout} />
         <Route>
           <Layout onShowCart={showCartHandler}>
             {showCart && <SideCart onClose={hideCartHandler} />}

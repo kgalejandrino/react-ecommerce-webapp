@@ -13,6 +13,11 @@
     outline: none;
 }
 
+.form-control input:focus {
+    border-color: #1f1f1f;
+    border-width: 2px;
+}
+
 .form-control input.error {
     color: #d8000c;
     border-color: #d8000c;

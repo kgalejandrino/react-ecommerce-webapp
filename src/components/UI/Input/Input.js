@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useRef, useImperativeHandle } from "react";
 
 import classes from "./Input.module.css";
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
+  const inputRef = useRef();
+
+  const activate = () => {
+    inputRef.current.focus();
+  };
+
+  useImperativeHandle(ref, () => {
+    return {
+      focus: activate,
+    };
+  });
+
   let width = "100%";
   return (
     <div
@@ -10,6 +22,7 @@ const Input = (props) => {
       style={props.width ? { width: props.width } : { width: width }}
     >
       <input
+        ref={inputRef}
         type={props.type}
         id={props.id}
         placeholder={props.placeholder}
@@ -21,6 +34,6 @@ const Input = (props) => {
       {props.children}
     </div>
   );
-};
+});
 
 export default Input;

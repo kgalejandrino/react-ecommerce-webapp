@@ -1,41 +1,34 @@
 import { Fragment, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import classes from "./CheckoutForm.module.css";
 import CheckoutInformation from "./CheckoutInformation";
-import Button from "../../UI/Button/Button";
 import CheckoutShipping from "./CheckoutShipping";
 
 const CheckoutForm = () => {
+  const [editContact, setEditContact] = useState(false);
+  const [editAddress, setEditAddress] = useState(false);
+
   const params = useParams();
-  const [formIsValid, setFormIsValid] = useState(false);
 
-  const validateForm = () => {
-    setFormIsValid(true);
-  };
+  const changeContactHandler = () => setEditContact(true);
 
-  const renderForm = <CheckoutInformation validate={validateForm} />;
+  const changeAddressHandler = () => setEditAddress(true);
+
+  console.log(editContact, editAddress);
+  let renderForm = (
+    <CheckoutInformation editContact={editContact} editAddress={editAddress} />
+  );
 
   if (params.link_id === "shipping") {
-    renderForm = <CheckoutShipping />;
+    renderForm = (
+      <CheckoutShipping
+        changeContact={changeContactHandler}
+        changeAddress={changeAddressHandler}
+      />
+    );
   }
 
-  return (
-    <Fragment>
-      {renderForm}
-      <div className={`${classes["form-footer"]} flex`}>
-        <span>
-          <i className="far fa-hand-point-left" aria-hidden="true"></i>
-          <a href="#return">Return to cart</a>
-        </span>
-        <Link to="/checkout/shipping">
-          <Button btnType="secondary" round="round" disabled={!formIsValid}>
-            Continue Shipping
-          </Button>
-        </Link>
-      </div>
-    </Fragment>
-  );
+  return <Fragment>{renderForm}</Fragment>;
 };
 
 export default CheckoutForm;

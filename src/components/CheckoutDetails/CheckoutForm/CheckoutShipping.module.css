@@ -1,0 +1,33 @@
+.shipping-box {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 48px;
+    font-size: 0.875rem;
+}
+
+.edit {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+.edit-info {
+    display: flex;
+    width: 100%;
+    margin-right: 8px;
+}
+
+.edit-info span:first-child {
+    color: #6e6e6e;
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.edit:last-of-type {
+    border-top: 1px solid #ccc;
+}
+
+.edit-btn:hover {
+    color: #6e6e6e;
+}

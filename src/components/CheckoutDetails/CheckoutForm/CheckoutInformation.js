@@ -1,10 +1,22 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 
 import Input from "../../UI/Input/Input";
 import useInput from "../../../hooks/use-input";
 import classes from "./CheckoutInformation.module.css";
+import CheckoutFooter from "./CheckoutFooter";
 
 const CheckoutInformation = (props) => {
+  const emailInputRef = useRef();
+  const addressInputRef = useRef();
+
+  useEffect(() => {
+    if (props.editContact) {
+      emailInputRef.current.focus();
+    } else if (props.editAddress) {
+      addressInputRef.current.focus();
+    }
+  }, [props.editContact, props.editAddress]);
+
   const {
     input: enteredEmail,
     isValid: enteredEmailIsValid,
@@ -50,6 +62,8 @@ const CheckoutInformation = (props) => {
       value.trim() !== "" && value.trim() !== "" && /^[A-Za-z\s]+$/.test(value)
   );
 
+  let formIsValid = false;
+
   if (
     enteredEmailIsValid &&
     enteredFnameIsValid &&
@@ -57,7 +71,7 @@ const CheckoutInformation = (props) => {
     enteredAddressIsValid &&
     enteredCityIsValid
   ) {
-    props.validate();
+    formIsValid = true;
   }
 
   return (
@@ -69,6 +83,7 @@ const CheckoutInformation = (props) => {
         </span>
       </div>
       <Input
+        ref={emailInputRef}
         type="text"
         id="email"
         placeholder={emailInputHasError ? "" : "Email address"}
@@ -114,6 +129,7 @@ const CheckoutInformation = (props) => {
           </Input>
         </div>
         <Input
+          ref={addressInputRef}
           type="text"
           id="address"
           placeholder={addressInputHasError ? "" : "Address"}
@@ -158,6 +174,7 @@ const CheckoutInformation = (props) => {
         </Input>
         <Input type="text" id="phonenumber" placeholder="Phone (optional)" />
       </div>
+      <CheckoutFooter validated={formIsValid} />
     </Fragment>
   );
 };

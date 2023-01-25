@@ -8,7 +8,7 @@ import img from "../../assets/rainbow-build.png";
 const Home = () => {
   const gallery = buildGallery.map((item) => {
     return (
-      <figure>
+      <figure key={item.alt}>
         <img src={item.src} alt={item.alt} />
       </figure>
     );
@@ -50,7 +50,7 @@ const Home = () => {
         <div className={classes["card-services"]}>
           <li>
             <span>
-              <i class="fas fa-level-up-alt" aria-hidden="true"></i>
+              <i className="fas fa-level-up-alt" aria-hidden="true"></i>
             </span>
             <h3>Performance</h3>
             <p>
@@ -61,7 +61,7 @@ const Home = () => {
           </li>
           <li>
             <span>
-              <i class="fas fa-tools" aria-hidden="true"></i>
+              <i className="fas fa-tools" aria-hidden="true"></i>
             </span>
             <h3>Testing</h3>
             <p>
@@ -72,7 +72,7 @@ const Home = () => {
           </li>
           <li>
             <span>
-              <i class="fas fa-headset" aria-hidden="true"></i>
+              <i className="fas fa-headset" aria-hidden="true"></i>
             </span>
             <h3>Support</h3>
             <p>

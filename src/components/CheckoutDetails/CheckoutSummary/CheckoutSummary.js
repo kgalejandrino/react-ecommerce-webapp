@@ -5,16 +5,17 @@ import CartContext from "../../../store/cart-context";
 import CheckoutItem from "../CheckoutSummary/CheckoutItem";
 import Button from "../../UI/Button/Button";
 
-const CheckoutSummary = () => {
+const CheckoutSummary = (props) => {
   const cartCtx = useContext(CartContext);
 
   const subTotal = cartCtx.totalAmount.toFixed(2);
   const tax = (subTotal * 0.0725).toFixed(2);
-  const total = (+subTotal + +tax).toFixed(2);
+  const total = (+subTotal + +tax + +props.shipping).toFixed(2);
 
   const cartItems = cartCtx.items.map((item) => {
     return (
       <CheckoutItem
+        key={item.id}
         img={item.img}
         name={item.name}
         cpu={item.cpu}
@@ -40,10 +41,10 @@ const CheckoutSummary = () => {
         </div>
         <div className={`${classes["text-receipt"]} flex`}>
           <span>Shipping</span>
-          <span>Free</span>
+          <span>{+props.shipping ? `$${props.shipping}` : "Free"}</span>
         </div>
         <div className={`${classes["text-receipt"]} flex`}>
-          <span>Taxes(estimated)</span>
+          <span>Estimated taxes</span>
           <span>{`$${tax}`}</span>
         </div>
       </div>

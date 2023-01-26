@@ -1,15 +1,20 @@
 .shipping-box {
     border: 1px solid #ccc;
     border-radius: 6px;
-    padding: 12px;
-    margin-top: 48px;
+    padding: 0 12px;
+    margin-top: 24px;
     font-size: 0.875rem;
 }
 
+.title {
+    margin-top: 36px;
+}
+
+/* Edit form */
 .edit {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
+    padding: 16px 0;
 }
 
 .edit-info {
@@ -31,3 +36,26 @@
 .edit-btn:hover {
     color: #6e6e6e;
 }
+
+/* Shipping method */
+.methods {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+}
+
+.methods:last-of-type {
+    border-top: 1px solid #ccc;
+}
+
+.method-info {
+    display: flex;
+    align-items: center;
+}
+
+.method-info input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.price { font-weight: 800;}

@@ -4,17 +4,15 @@ import { useParams } from "react-router-dom";
 import CheckoutInformation from "./CheckoutInformation";
 import CheckoutShipping from "./CheckoutShipping";
 
-const CheckoutForm = () => {
+const CheckoutForm = (props) => {
   const [editContact, setEditContact] = useState(false);
   const [editAddress, setEditAddress] = useState(false);
-
   const params = useParams();
 
-  const changeContactHandler = () => setEditContact(true);
+  const contactChangeHandler = () => setEditContact(true);
 
-  const changeAddressHandler = () => setEditAddress(true);
+  const addressChangeHandler = () => setEditAddress(true);
 
-  console.log(editContact, editAddress);
   let renderForm = (
     <CheckoutInformation editContact={editContact} editAddress={editAddress} />
   );
@@ -22,8 +20,9 @@ const CheckoutForm = () => {
   if (params.link_id === "shipping") {
     renderForm = (
       <CheckoutShipping
-        changeContact={changeContactHandler}
-        changeAddress={changeAddressHandler}
+        changeContact={contactChangeHandler}
+        changeAddress={addressChangeHandler}
+        getShipping={props.getShipping}
       />
     );
   }

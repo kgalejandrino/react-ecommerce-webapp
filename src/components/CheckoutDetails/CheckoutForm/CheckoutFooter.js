@@ -13,7 +13,7 @@ const CheckoutFooter = (props) => {
     prev = "information";
     next = "payment";
   } else if (params.link_id === "shipping") {
-    prev = "shipping";
+    prev = "information";
     next = "pay now";
   }
 
@@ -23,7 +23,7 @@ const CheckoutFooter = (props) => {
         <i className="far fa-hand-point-left" aria-hidden="true"></i>
         <a href="#return">Return to {prev}</a>
       </span>
-      <Link to="/checkout/shipping">
+      <Link to={`/checkout/${next}`}>
         <Button
           btnType="secondary"
           round="round"

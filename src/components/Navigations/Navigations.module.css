@@ -39,9 +39,11 @@
     
     .main-nav li {
         margin: 0;
-        padding: 16px 0;
+        padding: 12px 0;
         border-top: 1px solid #cecece;
     }
 
     .main-nav li:last-child { border-bottom: 1px solid #fff;}
+
+    .main-nav li a { font-size: 0.875rem;}
 }

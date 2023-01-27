@@ -1,9 +1,18 @@
-.logo-container{
-    width: 180px;
-    cursor: pointer;
+.main-logo, .mobile-logo {
+    height: auto;
 }
 
-.logo-container img {
-    width: 100%;
-    height: auto;
+.main-logo {
+    width: 160px;
+}
+
+.mobile-logo { 
+    display: none; 
+    width: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+    .main-logo { display: none; }
+
+    .mobile-logo { display: block; }
 }

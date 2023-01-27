@@ -18,3 +18,27 @@
     height: auto;
     cursor: pointer;
 }
+
+.icon-menu {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .collapse-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 64px;
+        padding: 36px 0;
+        background-color: #c42325;
+        width: 100%;
+    }
+
+    .open { display: block; }
+
+    .close { display: none; }
+
+    .icon-menu { display: block; }
+}

@@ -4,7 +4,6 @@
 }
 
 .main-nav li {
-    list-style-type: none;
     margin: 0 1em;
 }
 
@@ -17,9 +16,7 @@
 .main-nav li a.active,
 .main-nav li a:hover, 
 .main-nav li a:active {
-    border-bottom: 1px solid #fff;
-    border-width: 2px;
-    padding-bottom: 4px;
+    color: #cecece;
 }
 
 /* Footer Navigation */
@@ -30,4 +27,21 @@
 .footer-nav li a:hover {
     cursor: pointer;
     color: #ff1e20;
+}
+
+@media only screen and (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+        width: 90%;
+        max-width: 1450px;
+        margin: 0 auto;
+    }
+    
+    .main-nav li {
+        margin: 0;
+        padding: 16px 0;
+        border-top: 1px solid #cecece;
+    }
+
+    .main-nav li:last-child { border-bottom: 1px solid #fff;}
 }

@@ -1,15 +1,19 @@
-.cart-button {
+.header-btn {
+    display: flex;
+}
+
+.cart-btn {
     display: flex;
     background-color: transparent;
     position: relative;
 }
 
-.cart-button span i {
+.cart-btn span i {
     color: #fff;
     font-size: 1.25rem;
 }
 
-.cart-button p {
+.cart-btn p {
     background-color: #fe5a1d;
     color: #fff;
     border-radius: 25px;

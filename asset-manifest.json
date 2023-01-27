@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-ecommerce-webapp/static/css/main.dc1005b2.css",
-    "main.js": "/react-ecommerce-webapp/static/js/main.e56e268c.js",
+    "main.css": "/react-ecommerce-webapp/static/css/main.678642f5.css",
+    "main.js": "/react-ecommerce-webapp/static/js/main.2ace782d.js",
     "static/media/hero-img.png": "/react-ecommerce-webapp/static/media/hero-img.48b3debbcee1c01f6804.png",
     "static/media/prebuilt-banner-img.png": "/react-ecommerce-webapp/static/media/prebuilt-banner-img.b1feaa607ed052b4d06e.png",
     "static/media/rainbow-build.png": "/react-ecommerce-webapp/static/media/rainbow-build.31bcdfd9e097de34763c.png",
@@ -9,6 +9,7 @@
     "static/media/build6.jpg": "/react-ecommerce-webapp/static/media/build6.f49c8a5f4a4699a132a1.jpg",
     "static/media/build8.jpg": "/react-ecommerce-webapp/static/media/build8.2d60c33856270bb44a6e.jpg",
     "static/media/build5.jpg": "/react-ecommerce-webapp/static/media/build5.5fa55d256742f6ec34ad.jpg",
+    "static/media/white-mobile-logo.png": "/react-ecommerce-webapp/static/media/white-mobile-logo.116694b931212c1e388f.png",
     "static/media/build1.jpg": "/react-ecommerce-webapp/static/media/build1.e0fea6c244a958d6f941.jpg",
     "static/media/white-main-logo.png": "/react-ecommerce-webapp/static/media/white-main-logo.d4029aee19fc08445202.png",
     "static/media/build7.jpg": "/react-ecommerce-webapp/static/media/build7.7060254ad84140a9fb7f.jpg",
@@ -17,11 +18,11 @@
     "static/media/build4.jpg": "/react-ecommerce-webapp/static/media/build4.05151e245df0648a592a.jpg",
     "static/media/build2.jpg": "/react-ecommerce-webapp/static/media/build2.6f77f2e1eceac5a276fa.jpg",
     "index.html": "/react-ecommerce-webapp/index.html",
-    "main.dc1005b2.css.map": "/react-ecommerce-webapp/static/css/main.dc1005b2.css.map",
-    "main.e56e268c.js.map": "/react-ecommerce-webapp/static/js/main.e56e268c.js.map"
+    "main.678642f5.css.map": "/react-ecommerce-webapp/static/css/main.678642f5.css.map",
+    "main.2ace782d.js.map": "/react-ecommerce-webapp/static/js/main.2ace782d.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc1005b2.css",
-    "static/js/main.e56e268c.js"
+    "static/css/main.678642f5.css",
+    "static/js/main.2ace782d.js"
   ]
 }

@@ -45,7 +45,7 @@ const AvailablePreBuilt = (props) => {
     <div className={classes.prebuilt}>
       <div className="row">
         <h1 className={classes.title}>Pre-Built PC</h1>
-        <div className={`${classes.filter} flex`}>
+        <div className={classes.filter}>
           <span>Showing 1-9 of 20 results</span>
           <select className={classes.sort}>
             <option value="low">Sort by price: low to high</option>

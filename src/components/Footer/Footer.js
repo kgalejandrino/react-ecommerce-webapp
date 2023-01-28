@@ -7,10 +7,10 @@ import Logo from "../Logo/Logo";
 
 const Footer = () => {
   return (
-    <footer className={`${classes.footer} side-padding`}>
-      <div className={classes["footer-body"]}>
+    <footer className={classes.footer}>
+      <div className={`${classes["footer-body"]} row`}>
         <div className={`${classes["footer-card"]} ${classes.socials}`}>
-          <Logo />
+          <Logo footer={true} />
           <p>
             Not your typical pc build. We believed building pc is art and every
             build is treated as such.

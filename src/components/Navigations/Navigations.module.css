@@ -24,9 +24,9 @@
     margin-bottom: 8px;
 }
 
-.footer-nav li a:hover {
-    cursor: pointer;
-    color: #ff1e20;
+.footer-nav li a:active,
+.footer-nav li a:hover { 
+    color: #c42325;
 }
 
 @media only screen and (max-width: 768px) {

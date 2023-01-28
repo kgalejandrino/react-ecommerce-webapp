@@ -5,7 +5,19 @@ import classes from "./Logo.module.css";
 import logo from "../../assets/white-main-logo.png";
 import mobileLogo from "../../assets/white-mobile-logo.png";
 
-const Logo = () => {
+const Logo = (props) => {
+  if (props.footer) {
+    return (
+      <Link to="/">
+        <img
+          src={logo}
+          alt="Nemirk Pc Logo with text"
+          className={classes["footer-logo"]}
+        />
+      </Link>
+    );
+  }
+
   return (
     <Fragment>
       <Link to="/">

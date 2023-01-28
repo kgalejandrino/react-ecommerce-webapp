@@ -43,19 +43,21 @@ const AvailablePreBuilt = (props) => {
 
   return (
     <div className={classes.prebuilt}>
-      <h1 className={classes.title}>Pre-Built PC</h1>
-      <div className={`${classes.filter} flex side-padding`}>
-        <span>Showing 1-9 of 20 results</span>
-        <select className={classes.sort}>
-          <option value="low">Sort by price: low to high</option>
-          <option value="high">Sort by price: high to low</option>
-        </select>
+      <div className="row">
+        <h1 className={classes.title}>Pre-Built PC</h1>
+        <div className={`${classes.filter} flex`}>
+          <span>Showing 1-9 of 20 results</span>
+          <select className={classes.sort}>
+            <option value="low">Sort by price: low to high</option>
+            <option value="high">Sort by price: high to low</option>
+          </select>
+        </div>
+        {isLoading && <Spinner />}
+        {httpError && <div className="error">{httpError}</div>}
+        {!isLoading && !httpError && (
+          <div className={classes.items}>{preBuiltItem}</div>
+        )}
       </div>
-      {isLoading && <Spinner />}
-      {httpError && <div className="error">{httpError}</div>}
-      {!isLoading && !httpError && (
-        <div className={`${classes.items} side-padding`}>{preBuiltItem}</div>
-      )}
     </div>
   );
 };

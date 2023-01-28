@@ -1,11 +1,11 @@
 .prebuilt {
     background-color: #181719;
-    padding: 5rem 0;
+    padding: 80px 0;
 }
 
 .title {
     color: #fff;
-    font-size: 3em;
+    font-size: 2.6em;
     text-transform: uppercase;
     text-align: center;
 }
@@ -19,14 +19,17 @@
     border: none;
     outline: none;
     color: #fff;
-    padding: 0.5rem;
+    padding: 6px;
     background-color:  rgba(36,36,36,.829);
 }
 
 .items {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 990px) {
+    .filter {  margin-bottom: 0; }
 }

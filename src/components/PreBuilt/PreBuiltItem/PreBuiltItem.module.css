@@ -1,8 +1,8 @@
 .item {
     width: 30%;
     text-align: center;
-    margin-top: 6rem;
-    padding-bottom: 2rem;
+    margin-top: 96px;
+    padding-bottom: 32px;
     transform: scale(.9);
     transition: all .2s ease-in-out;
 }
@@ -15,8 +15,8 @@
 }
 
 .description {
-    margin-top: 2rem;
-    margin-bottom: 1.2rem;
+    margin-top: 32px;
+    margin-bottom: 16px;
 }
 
 .item img {
@@ -28,11 +28,11 @@
 .item h3 {
     text-transform: uppercase;
     color: #fff;
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
 }
 
 .description p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 6px;
     color: #b9b9b9;
     font-size: 0.87rem;
 }
@@ -50,4 +50,15 @@
 .item button:hover { 
     background-color: #d8430d !important;
     transition: background-color 0.3s;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 990px) {
+    .item { width: 45%; }
+}
+
+@media only screen and (max-width: 640px) {
+    .item { 
+        width: 100%; 
+    }
 }

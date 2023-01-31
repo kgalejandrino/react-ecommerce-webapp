@@ -1,13 +1,34 @@
 .item {
     display: flex;
-    margin: 120px 0;
+    justify-content: space-between;
+    margin-top: 120px;
+    margin-bottom: 120px;
 }
 
 .img-container {
-    flex-shrink: 0;
+    width: 50%;
 }
 
-.img-container img {
-    width: 100%;
+.item-details {
+    width: 50%;
+}
+
+@media only screen and (max-width: 1080px) {
+    .item { 
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .img-container { width: 100%; }
+
+    .item-details {
+        width: 100%;
+        margin-top: 56px;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .item-details button { width: 100%;}
 }
 

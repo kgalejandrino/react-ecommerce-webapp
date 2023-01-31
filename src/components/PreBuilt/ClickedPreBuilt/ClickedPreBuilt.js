@@ -74,7 +74,7 @@ const ClickedPreBuilt = (props) => {
     );
   }
   return (
-    <div className={`${classes.item} side-padding`}>
+    <div className={`${classes.item} row`}>
       {isLoading && <Spinner color="#181719" />}
       {httpError && <div className="error">{httpError}</div>}
       {!isLoading && !httpError && loadItem}

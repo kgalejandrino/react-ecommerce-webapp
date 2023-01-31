@@ -37,7 +37,12 @@ a {
     color: inherit;
     text-decoration: none;
 }
-  
+
+img {
+    width: 100%;
+    height: auto;
+}
+
 .side-padding {
     padding-left: 180px;
     padding-right: 180px;
@@ -66,5 +71,6 @@ a {
 .row {
     width: 90%;
     max-width: 1450px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }

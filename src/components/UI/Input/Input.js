@@ -15,12 +15,8 @@ const Input = React.forwardRef((props, ref) => {
     };
   });
 
-  let width = "100%";
   return (
-    <div
-      className={classes["form-control"]}
-      style={props.width ? { width: props.width } : { width: width }}
-    >
+    <div className={classes["form-control"]}>
       <input
         ref={inputRef}
         type={props.type}

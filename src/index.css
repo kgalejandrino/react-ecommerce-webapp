@@ -28,7 +28,7 @@ button {
 button:disabled,
 button[disabled],
 button[disabled]:hover{
-    background-color: #f5f5f5 !important;
+    background-color: #ebebeb !important;
     color: rgb(204, 204, 204) !important;
     cursor: default !important;
 }

@@ -1,6 +1,9 @@
 /* Form Footer */
 .form-footer {
     margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .form-footer span {
@@ -15,4 +18,16 @@
 
 .form-footer button {
     width: 180px;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 468px) {
+    .form-footer { 
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+
+    .form-footer a,.form-footer button  { width: 100%; }
+
+    .form-footer span { margin-top: 12px;}
 }

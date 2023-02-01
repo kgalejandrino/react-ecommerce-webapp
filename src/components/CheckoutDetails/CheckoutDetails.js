@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import classes from "./CheckoutDetails.module.css";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
@@ -8,27 +8,51 @@ import CheckoutSummary from "./CheckoutSummary/CheckoutSummary";
 const CheckoutDetails = () => {
   const [shipping, setShipping] = useState(0);
   const [showSummary, setShowSummary] = useState(false);
+  const [dropdownActive, setDropdownActive] = useState(false);
+  const dropdownRef = useRef(null);
 
   const getShipping = (fee) => setShipping(fee);
 
-  const toggleDropdownHandler = () => setShowSummary((prevShow) => !prevShow);
+  const toggleDropdownHandler = () => {
+    setShowSummary((prevShow) => !prevShow);
+    setDropdownActive(true);
+  };
+
+  useEffect(() => {
+    const clickOutsideHandler = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownActive(false);
+      }
+    };
+    document.addEventListener("click", clickOutsideHandler);
+    return () => document.removeEventListener("click", clickOutsideHandler);
+  }, [dropdownRef]);
 
   const dropdown = (
     <div
       className={classes["dropdown-summary"]}
       onClick={toggleDropdownHandler}
+      ref={dropdownRef}
     >
       <div className={classes["dropdown-wrap"]}>
-        <div className={classes["dropdown-text"]}>
+        <div
+          className={
+            dropdownActive
+              ? `${classes["dropdown-text"]} ${classes.active}`
+              : classes["dropdown-text"]
+          }
+        >
           <span>
-            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+            <i className="fas fa-shopping-cart" aria-hidden="true"></i>
           </span>
-          <span>Show order summary</span>
           <span>
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            {showSummary ? "Hide order summary" : "Show order summary"}
+          </span>
+          <span>
+            <i className="fas fa-angle-down" aria-hidden="true"></i>
           </span>
         </div>
-        <span>$2356.49</span>
+        <span className={classes["dropdown-price"]}>$2356.49</span>
       </div>
     </div>
   );

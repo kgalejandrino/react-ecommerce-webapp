@@ -16,11 +16,6 @@
     margin-right: 12px;
 }
 
-.img-container img {
-    width: 100%;
-    height: auto;
-}
-
 .item-desc {
     display: flex;
     flex-direction: column;
@@ -36,4 +31,22 @@
     margin-top: 6px;
 }
 
-.price { font-weight: bold;}
+.mobile-price { 
+    display: none; 
+    color: #000 !important;
+    font-size: 0.875rem !important;
+    font-weight: 800;
+}
+
+.price { font-weight: bold; }
+
+/* Media Queries */
+@media only screen and (max-width: 468px) {
+    .mobile-price { display: block;}
+
+    .price { display: none;}
+
+    .img-container {
+        width: 80px;
+    }
+}

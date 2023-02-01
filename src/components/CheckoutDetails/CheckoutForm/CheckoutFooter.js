@@ -18,7 +18,7 @@ const CheckoutFooter = (props) => {
   }
 
   return (
-    <div className={`${classes["form-footer"]} flex`}>
+    <div className={classes["form-footer"]}>
       <span>
         <i className="far fa-hand-point-left" aria-hidden="true"></i>
         <a href="#return">Return to {prev}</a>

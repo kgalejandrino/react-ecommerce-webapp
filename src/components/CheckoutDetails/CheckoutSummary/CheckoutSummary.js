@@ -30,7 +30,7 @@ const CheckoutSummary = (props) => {
       <ul className={classes["item-lists"]}>{cartItems}</ul>
       <div className={classes.coupon}>
         <input type="text" id="coupon" placeholder="Enter promo code" />
-        <Button btnType="secondary" round="round" disabled="True">
+        <Button btnType="secondary" round="round" disabled="true">
           Apply
         </Button>
       </div>

@@ -13,6 +13,7 @@ const CheckoutItem = (props) => {
           <h5>{props.name}</h5>
           <span>{props.cpu}</span>
           <span>{props.gpu}</span>
+          <span className={classes["mobile-price"]}>{`$${props.price}`}</span>
         </div>
       </div>
       <span className={classes.price}>{`$${props.price}`}</span>

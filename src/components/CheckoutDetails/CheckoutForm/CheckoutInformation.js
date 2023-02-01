@@ -76,7 +76,7 @@ const CheckoutInformation = (props) => {
 
   return (
     <Fragment>
-      <div className={`${classes.section} ${classes["section-flex"]}`}>
+      <div className={`${classes["section-info"]} ${classes["section-flex"]}`}>
         <h3 className={classes.title}>Contact Information</h3>
         <span className={classes.account}>
           Already have an account? <a href="#">Login</a>
@@ -96,13 +96,12 @@ const CheckoutInformation = (props) => {
           <p className={classes.error}>Please enter a valid email address.</p>
         )}
       </Input>
-      <div className={classes.section}>
+      <div className={classes["section-shipping"]}>
         <h3 className={classes.title}>Shipping Address</h3>
-        <div className={classes["section-flex"]}>
+        <div className={`${classes["section-flex"]} ${classes["flex-two"]}`}>
           <Input
             type="text"
             id="firstName"
-            width="48%"
             placeholder={fnameInputHasError ? "" : "First name"}
             value={enteredFname}
             onChange={fnameChangeHandler}
@@ -116,7 +115,6 @@ const CheckoutInformation = (props) => {
           <Input
             type="text"
             id="lastName"
-            width="48%"
             placeholder={lnameInputHasError ? "" : "Last name"}
             value={enteredLname}
             onChange={lnameChangeHandler}
@@ -142,15 +140,15 @@ const CheckoutInformation = (props) => {
             <p className={classes.error}>Please enter a valid address</p>
           )}
         </Input>
-        <div className={classes["section-flex"]}>
+        <div className={`${classes["section-flex"]} ${classes["flex-three"]}`}>
           <div className={`${classes["form-control"]} ${classes.country}`}>
-            <label htmlFor="country">Country/Region</label>
+            <label htmlFor="country">Country</label>
             <select name="country" id="country">
               <option disabled>Select Country</option>
               <option value="USA">United States</option>
             </select>
           </div>
-          <Input type="text" id="zip" placeholder="Zip code" width="32%" />
+          <Input type="text" id="zip" placeholder="Zip code" />
           <div className={`${classes["form-control"]} ${classes.state}`}>
             <label htmlFor="country">State</label>
             <select name="state" id="state">

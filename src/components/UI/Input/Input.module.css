@@ -27,3 +27,8 @@
 .form-control input.error::placeholder {
     color: #d8000c;
 }
+
+/* Media Queries */
+@media only screen and (max-width: 468px) {
+    .form-control input { width: 100%;  }
+}

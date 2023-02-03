@@ -1,10 +1,6 @@
-.img {
-    border-right: none; 
-    padding-right: 0;
-    width: 150px;
-}
+.details { display: flex; }
 
-.details { border-left: none;  }
+.details div:first-of-type { margin-right: 24px; }
 
 .quantity,
 .subtotal { 
@@ -14,4 +10,17 @@
 
 .subtotal p:last-child{
    margin-top: 12px;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 820px) {
+    .quantity, .subtotal { display: none;}
+    
+    .details { justify-content: space-between;}
+}
+
+@media only screen and (max-width: 468px) {
+    .details { flex-direction: column; }
+
+    .details div:first-of-type { margin-right: 0; }
 }

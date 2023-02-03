@@ -6,16 +6,23 @@ import classes from "./MainCartItem.module.css";
 const MainCartItem = (props) => {
   return (
     <tr>
-      <td className={classes.img}>
-        <CartImage cart="main-cart" img={props.img} />
-      </td>
       <td className={classes.details}>
+        <CartImage cart="maincart" img={props.img} />
         <CartDetails
+          cart="maincart"
           name={props.name}
           cpu={props.cpu}
           gpu={props.gpu}
           price={props.price}
-        />
+        >
+          <CartButton
+            cart="mobilecart-btn"
+            amount={props.amount}
+            onAdd={props.onAdd}
+            onRemove={props.onRemove}
+            onRemoveAll={props.onRemoveAll}
+          />
+        </CartDetails>
       </td>
       <td className={classes.quantity}>
         <CartButton

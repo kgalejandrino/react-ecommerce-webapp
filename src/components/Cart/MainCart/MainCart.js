@@ -41,12 +41,12 @@ const MainCart = () => {
   ));
 
   return (
-    <div className={`${classes["main-cart"]} side-padding`}>
+    <div className={`${classes["main-cart"]} row`}>
       <h2>Cart</h2>
       <table>
         <thead>
           <tr>
-            <th colSpan="2">Item</th>
+            <th>Item</th>
             <th>Quantity</th>
             <th>Subtotal</th>
           </tr>
@@ -54,7 +54,7 @@ const MainCart = () => {
         <tbody>
           {cartItems}
           <tr>
-            <td colSpan="4">
+            <td colSpan="3">
               <div className={classes.total}>
                 <span>Total</span>
                 <span>{`${totalAmount}`}</span>
@@ -63,7 +63,7 @@ const MainCart = () => {
           </tr>
         </tbody>
       </table>
-      <div className="flex">
+      <div className={classes["flex-link"]}>
         <Link to="/pre-built" className={classes.link}>
           <span>
             <i className="far fa-hand-point-left" aria-hidden="true"></i>

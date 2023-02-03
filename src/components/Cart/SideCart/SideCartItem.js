@@ -6,8 +6,9 @@ import classes from "./SideCartItem.module.css";
 const SideCartItem = (props) => {
   return (
     <li className={classes.item}>
-      <CartImage cart="side-cart" img={props.img} />
+      <CartImage cart="sidecart" img={props.img} />
       <CartDetails
+        cart="sidecart"
         name={props.name}
         img={props.img}
         cpu={props.cpu}

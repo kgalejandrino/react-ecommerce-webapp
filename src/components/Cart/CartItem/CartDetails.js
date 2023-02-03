@@ -5,7 +5,7 @@ import classes from "./CartDetails.module.css";
 const CartDetails = (props) => {
   return (
     <Fragment>
-      <div className={classes.details}>
+      <div className={`${classes.details} ${classes[props.cart]}`}>
         <h5>{props.name}</h5>
         <p className={classes.desc}>{props.cpu}</p>
         <p className={classes.desc}>{props.gpu}</p>

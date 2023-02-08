@@ -21,6 +21,10 @@
     padding: 0 8px;
 }
 
+.header-links li:last-child::after {
+    content: none;
+}
+
 .header-links li a:hover,
 .header-links li a:active,
 .header-links li a.active {

@@ -1,26 +1,23 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 
 import Input from "../../UI/Input/Input";
-import useInput from "../../../hooks/use-input";
 import classes from "./CheckoutInformation.module.css";
 import CheckoutFooter from "./CheckoutFooter";
+import useInput from "../../../hooks/use-input";
+import useLocalStorage from "../../../hooks/use-localStorage";
 
 const CheckoutInformation = (props) => {
   const emailInputRef = useRef();
   const addressInputRef = useRef();
-
-  useEffect(() => {
-    if (props.editContact) {
-      emailInputRef.current.focus();
-    } else if (props.editAddress) {
-      addressInputRef.current.focus();
-    }
-  }, [props.editContact, props.editAddress]);
+  const { storedValue } = useLocalStorage("user");
+  const history = useHistory();
 
   const {
     input: enteredEmail,
     isValid: enteredEmailIsValid,
     hasError: emailInputHasError,
+    getStoredInput: getEmailStoredInputHandler,
     inputChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
   } = useInput((value) => value.trim() !== "" && value.trim().includes("@"));
@@ -29,6 +26,7 @@ const CheckoutInformation = (props) => {
     input: enteredFname,
     isValid: enteredFnameIsValid,
     hasError: fnameInputHasError,
+    getStoredInput: getFirstNameStoredInputHandler,
     inputChangeHandler: fnameChangeHandler,
     inputBlurHandler: fnameBlurHandler,
   } = useInput((value) => value.trim() !== "" && /^[A-Za-z\s]+$/.test(value));
@@ -37,6 +35,7 @@ const CheckoutInformation = (props) => {
     input: enteredLname,
     isValid: enteredLnameIsValid,
     hasError: lnameInputHasError,
+    getStoredInput: getLastNameStoredInputHandler,
     inputChangeHandler: lnameChangeHandler,
     inputBlurHandler: lnameBlurHandler,
   } = useInput((value) => value.trim() !== "" && /^[A-Za-z\s]+$/.test(value));
@@ -45,6 +44,7 @@ const CheckoutInformation = (props) => {
     input: enteredAddress,
     isValid: enteredAddressIsValid,
     hasError: addressInputHasError,
+    getStoredInput: getAddressStoredInputHandler,
     inputChangeHandler: addressChangeHandler,
     inputBlurHandler: addressBlurHandler,
   } = useInput(
@@ -52,9 +52,22 @@ const CheckoutInformation = (props) => {
   );
 
   const {
+    input: enteredCode,
+    isValid: enteredCodeIsValid,
+    hasError: codeInputHasError,
+    getStoredInput: getCodeStoredInputHandler,
+    inputChangeHandler: codeChangeHandler,
+    inputBlurHandler: codeBlurHandler,
+  } = useInput(
+    (value) =>
+      value.trim() !== "" && value.trim() !== "" && /^[0-9]{5}$/.test(value)
+  );
+
+  const {
     input: enteredCity,
     isValid: enteredCityIsValid,
     hasError: cityInputHasError,
+    getStoredInput: getCityStoredInputHandler,
     inputChangeHandler: cityChangeHandler,
     inputBlurHandler: cityBlurHandler,
   } = useInput(
@@ -62,25 +75,57 @@ const CheckoutInformation = (props) => {
       value.trim() !== "" && value.trim() !== "" && /^[A-Za-z\s]+$/.test(value)
   );
 
-  let formIsValid = false;
+  useEffect(() => {
+    if (props.editContact) {
+      emailInputRef.current.focus();
+    } else if (props.editAddress) {
+      addressInputRef.current.focus();
+    }
 
-  if (
+    if (storedValue) {
+      getEmailStoredInputHandler(storedValue.email);
+      getFirstNameStoredInputHandler(storedValue.firstName);
+      getLastNameStoredInputHandler(storedValue.lastName);
+      getAddressStoredInputHandler(storedValue.address);
+      getCodeStoredInputHandler(storedValue.zipCode);
+      getCityStoredInputHandler(storedValue.city);
+    }
+  }, [props.editContact, props.editAddress, storedValue]);
+
+  let formIsValid =
     enteredEmailIsValid &&
     enteredFnameIsValid &&
     enteredLnameIsValid &&
     enteredAddressIsValid &&
-    enteredCityIsValid
-  ) {
-    formIsValid = true;
-  }
+    enteredCodeIsValid &&
+    enteredCityIsValid;
+
+  const confirmHandler = (event) => {
+    event.preventDefault();
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        email: enteredEmail,
+        firstName: enteredFname,
+        lastName: enteredLname,
+        address: enteredAddress,
+        zipCode: enteredCode,
+        city: enteredCity,
+        state: "CA",
+        country: "UnitedStates",
+      })
+    );
+
+    history.push("/checkout/shipping");
+    console.log("test");
+  };
 
   return (
-    <Fragment>
+    <form onSubmit={confirmHandler} id="checkout-form">
       <div className={`${classes["section-info"]} ${classes["section-flex"]}`}>
         <h3 className={classes.title}>Contact Information</h3>
-        <span className={classes.account}>
-          Already have an account? <a href="#">Login</a>
-        </span>
+        <span className={classes.account}>Already have an account? Login</span>
       </div>
       <Input
         ref={emailInputRef}
@@ -148,12 +193,24 @@ const CheckoutInformation = (props) => {
               <option value="USA">United States</option>
             </select>
           </div>
-          <Input type="text" id="zip" placeholder="Zip code" />
+          <Input
+            type="text"
+            id="zip"
+            placeholder={codeInputHasError ? "" : "Zip code"}
+            value={enteredCode}
+            onChange={codeChangeHandler}
+            onBlur={codeBlurHandler}
+            error={codeInputHasError}
+          >
+            {codeInputHasError && (
+              <p className={classes.error}>Please enter a valid zip code.</p>
+            )}
+          </Input>
           <div className={`${classes["form-control"]} ${classes.state}`}>
             <label htmlFor="country">State</label>
             <select name="state" id="state">
               <option disabled>Select State</option>
-              <option value="Ca">California</option>
+              <option value="Ca">CA</option>
             </select>
           </div>
         </div>
@@ -172,8 +229,12 @@ const CheckoutInformation = (props) => {
         </Input>
         <Input type="text" id="phonenumber" placeholder="Phone (optional)" />
       </div>
-      <CheckoutFooter validated={formIsValid} />
-    </Fragment>
+      <CheckoutFooter
+        validated={formIsValid}
+        type="submit"
+        id="checkout-form"
+      />
+    </form>
   );
 };
 

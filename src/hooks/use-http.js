@@ -4,11 +4,13 @@ const useHttp = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
 
-  const fetchData = useCallback(async (transformData) => {
+  const fetchData = useCallback(async (requestConfig, transformData) => {
     try {
-      const response = await fetch(
-        "https://react-ecommerce-pcbuilds-default-rtdb.firebaseio.com/prebuilt.json"
-      );
+      const response = await fetch(requestConfig.url, {
+        method: requestConfig.method ? requestConfig.method : "GET",
+        headers: requestConfig.headers ? requestConfig.headers : {},
+        body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
+      });
 
       if (!response.ok) {
         throw new Error("Something went wrong!");

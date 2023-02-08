@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 const useInput = (validateInput) => {
   const [enteredInput, setEnteredInput] = useState("");
@@ -11,14 +11,21 @@ const useInput = (validateInput) => {
     setEnteredInput(event.target.value);
   };
 
-  const inputBlurHandler = (event) => {
+  const inputBlurHandler = () => {
     setIsTouched(true);
+  };
+
+  const getStoredInput = (val) => {
+    if (val) {
+      setEnteredInput(val);
+    }
   };
 
   return {
     input: enteredInput,
     hasError,
     isValid: valueIsValid,
+    getStoredInput,
     inputChangeHandler,
     inputBlurHandler,
   };

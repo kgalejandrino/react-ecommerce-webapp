@@ -25,7 +25,12 @@ const AvailablePreBuilt = (props) => {
       }
       setPrebuilt(loadedPrebuilt);
     };
-    fetchData(transformData);
+    fetchData(
+      {
+        url: "https://react-ecommerce-pcbuilds-default-rtdb.firebaseio.com/prebuilt.json",
+      },
+      transformData
+    );
   }, [fetchData]);
 
   const preBuiltItem = prebuilt.map((item) => (

@@ -10,9 +10,9 @@ const CheckoutForm = (props) => {
   const [editAddress, setEditAddress] = useState(false);
   const params = useParams();
 
-  const contactChangeHandler = () => setEditContact(true);
+  const editContactHandler = () => setEditContact(true);
 
-  const addressChangeHandler = () => setEditAddress(true);
+  const editAddressHandler = () => setEditAddress(true);
 
   let renderForm = (
     <CheckoutInformation editContact={editContact} editAddress={editAddress} />
@@ -21,8 +21,8 @@ const CheckoutForm = (props) => {
   if (params.link_id === "shipping") {
     renderForm = (
       <CheckoutShipping
-        changeContact={contactChangeHandler}
-        changeAddress={addressChangeHandler}
+        editContact={editContactHandler}
+        editAddress={editAddressHandler}
         getShipping={props.getShipping}
       />
     );

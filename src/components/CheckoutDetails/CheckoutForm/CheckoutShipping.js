@@ -19,7 +19,7 @@ const CheckoutShipping = (props) => {
             <span>Contact</span>
             <span>nikevs16@yahoo.com</span>
           </div>
-          <Link to="/checkout/information" onClick={props.changeContact}>
+          <Link to="/checkout/information" onClick={props.editContact}>
             <span className={classes["edit-btn"]}>Change</span>
           </Link>
         </div>
@@ -31,7 +31,7 @@ const CheckoutShipping = (props) => {
               United States
             </span>
           </div>
-          <Link to="/checkout/information" onClick={props.changeAddress}>
+          <Link to="/checkout/information" onClick={props.editAddress}>
             <span className={classes["edit-btn"]}>Change</span>
           </Link>
         </div>

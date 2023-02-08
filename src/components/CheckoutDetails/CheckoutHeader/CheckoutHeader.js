@@ -22,11 +22,11 @@ const CheckoutHeader = () => {
             Shipping
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink activeClassName={classes.active} to="/checkout/payment">
             Payment
           </NavLink>
-        </li>
+        </li> */}
       </ul>
       <img src={logo} alt={"Nemirk pc logo"} className={classes.logo} />
     </div>

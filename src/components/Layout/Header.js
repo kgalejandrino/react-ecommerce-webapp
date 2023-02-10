@@ -13,10 +13,7 @@ const Header = (props) => {
     <header className={`${classes.header}`}>
       <div className={`row flex`}>
         <span className={classes["icon-menu"]} onClick={showMenuHandler}>
-          <i
-            class="fas fa-bars undefined MainHeader_icon-menu__3obD5"
-            aria-hidden="true"
-          ></i>
+          <i className="fas fa-bars" aria-hidden="true"></i>
         </span>
         <Logo />
         <nav

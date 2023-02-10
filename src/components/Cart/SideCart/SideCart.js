@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../../UI/Button/Button";
-import Modal from "../../UI/Modal";
+import Modal from "../../UI/Modal/Modal";
 import CartContext from "../../../store/cart-context";
 import classes from "./SideCart.module.css";
 import SideCartItem from "./SideCartItem";
@@ -43,7 +43,7 @@ const Cart = (props) => {
   ));
 
   return (
-    <Modal onClose={props.onClose}>
+    <Modal onClose={props.onClose} modal="side-modal">
       <div className={`${classes.header}`}>
         <p>Cart</p>
         <span onClick={props.onClose}>

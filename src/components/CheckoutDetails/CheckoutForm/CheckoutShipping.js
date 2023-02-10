@@ -1,23 +1,57 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import CheckoutFooter from "./CheckoutFooter";
 import classes from "./CheckoutShipping.module.css";
+import useLocalStorage from "../../../hooks/use-localStorage";
+import useHttp from "../../../hooks/use-http";
+import CartContext from "../../../store/cart-context";
+import Modal from "../../UI/Modal/Modal";
+import Spinner from "../../UI/Spinner/Spinner";
+import Button from "../../UI/Button/Button";
 
 const CheckoutShipping = (props) => {
+  const { storedValue } = useLocalStorage("user");
+  const cartCtx = useContext(CartContext);
+  const { isLoading, httpError, fetchData } = useHttp();
+  const [didSubmit, setDidSubmit] = useState(false);
+
   const shippingChangeHandler = (event) => {
     props.getShipping(event.target.value);
   };
 
   const expressPrice = 5.99;
 
-  return (
-    <Fragment>
+  let email, address;
+
+  if (storedValue) {
+    email = storedValue.email;
+    address = `${storedValue.address}, ${storedValue.city} ${storedValue.state} ${storedValue.zipCode}, ${storedValue.country}`;
+  }
+
+  const confirmHandler = (event) => {
+    event.preventDefault();
+
+    fetchData({
+      url: "https://react-ecommerce-pcbuilds-default-rtdb.firebaseio.com/orders.json",
+      method: "POST",
+      body: {
+        user: storedValue,
+        orders: cartCtx.items,
+      },
+    });
+
+    setDidSubmit(true);
+    localStorage.clear();
+  };
+
+  const formContext = (
+    <form onSubmit={confirmHandler}>
       <div className={classes["shipping-box"]}>
         <div className={classes["edit"]}>
           <div className={classes["edit-info"]}>
             <span>Contact</span>
-            <span>nikevs16@yahoo.com</span>
+            <span>{email}</span>
           </div>
           <Link to="/checkout/information" onClick={props.editContact}>
             <span className={classes["edit-btn"]}>Change</span>
@@ -26,10 +60,7 @@ const CheckoutShipping = (props) => {
         <div className={classes["edit"]}>
           <div className={classes["edit-info"]}>
             <span>Ship to</span>
-            <span>
-              2049 S. San Joaquin St., Apt. 214, Apt. 214, Stockton CA 95206,
-              United States
-            </span>
+            <span>{address}</span>
           </div>
           <Link to="/checkout/information" onClick={props.editAddress}>
             <span className={classes["edit-btn"]}>Change</span>
@@ -70,7 +101,34 @@ const CheckoutShipping = (props) => {
           <span className={classes.price}>Free</span>
         </div>
       </div>
-      <CheckoutFooter validated={true} />
+      <CheckoutFooter validated={true} type="submit" />
+    </form>
+  );
+
+  const isSubmittingModalContent = (
+    <Modal modal="checkout-modal">
+      <Spinner color="#000" />
+    </Modal>
+  );
+
+  const didSubmitModalContent = (
+    <Modal modal="checkout-modal">
+      <div className={classes["order-successful"]}>
+        <span>
+          <i class="fa-regular fa-circle-check"></i>
+        </span>
+        <p>Order Placed!</p>
+        <p>Order information was sent to your email.</p>
+        <Button>Done</Button>
+      </div>
+    </Modal>
+  );
+
+  return (
+    <Fragment>
+      {isLoading && isSubmittingModalContent}
+      {!isLoading && didSubmit && didSubmitModalContent}
+      {formContext}
     </Fragment>
   );
 };

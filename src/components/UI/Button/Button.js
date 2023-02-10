@@ -7,6 +7,7 @@ const Button = (props) => {
       className={`${classes.btn} ${classes[props.btnType]} ${
         classes[props.round]
       }`}
+      onClick={props.clicked}
     >
       {props.children}
     </button>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import classes from "./CheckoutFooter.module.css";
 import Button from "../../UI/Button/Button";
@@ -18,12 +18,15 @@ const CheckoutFooter = (props) => {
     <div className={classes["form-footer"]}>
       <span>
         <i className="far fa-hand-point-left" aria-hidden="true"></i>
-        <a href="#return">Return to {prev}</a>
+        <Link to="/cart" href="#return">
+          Return to {prev}
+        </Link>
       </span>
       <Button
         btnType="secondary"
         round="round"
         disabled={!props.validated ? true : false}
+        clicked={props.clicked}
       >
         {next}
       </Button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 
 import Input from "../../UI/Input/Input";
@@ -90,7 +90,17 @@ const CheckoutInformation = (props) => {
       getCodeStoredInputHandler(storedValue.zipCode);
       getCityStoredInputHandler(storedValue.city);
     }
-  }, [props.editContact, props.editAddress, storedValue]);
+  }, [
+    props.editContact,
+    props.editAddress,
+    storedValue,
+    getEmailStoredInputHandler,
+    getFirstNameStoredInputHandler,
+    getLastNameStoredInputHandler,
+    getAddressStoredInputHandler,
+    getCodeStoredInputHandler,
+    getCityStoredInputHandler,
+  ]);
 
   let formIsValid =
     enteredEmailIsValid &&
@@ -100,9 +110,7 @@ const CheckoutInformation = (props) => {
     enteredCodeIsValid &&
     enteredCityIsValid;
 
-  const confirmHandler = (event) => {
-    event.preventDefault();
-
+  const continueClickHandler = () => {
     localStorage.setItem(
       "user",
       JSON.stringify({
@@ -113,16 +121,15 @@ const CheckoutInformation = (props) => {
         zipCode: enteredCode,
         city: enteredCity,
         state: "CA",
-        country: "UnitedStates",
+        country: "United States",
       })
     );
 
     history.push("/checkout/shipping");
-    console.log("test");
   };
 
   return (
-    <form onSubmit={confirmHandler} id="checkout-form">
+    <Fragment>
       <div className={`${classes["section-info"]} ${classes["section-flex"]}`}>
         <h3 className={classes.title}>Contact Information</h3>
         <span className={classes.account}>Already have an account? Login</span>
@@ -229,12 +236,8 @@ const CheckoutInformation = (props) => {
         </Input>
         <Input type="text" id="phonenumber" placeholder="Phone (optional)" />
       </div>
-      <CheckoutFooter
-        validated={formIsValid}
-        type="submit"
-        id="checkout-form"
-      />
-    </form>
+      <CheckoutFooter validated={formIsValid} clicked={continueClickHandler} />
+    </Fragment>
   );
 };
 

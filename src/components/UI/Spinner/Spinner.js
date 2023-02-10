@@ -7,7 +7,7 @@ const spinner = (props) => (
       <div style={{ borderColor: `${props.color}` }}></div>
     </div>
     <p className="spinner-text" style={{ color: `${props.color}` }}>
-      Loading...
+      {props.children}
     </p>
   </div>
 );

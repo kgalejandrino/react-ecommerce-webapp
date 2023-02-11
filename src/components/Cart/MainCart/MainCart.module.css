@@ -1,5 +1,21 @@
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.empty-cart P {
+    line-height: 24px;
+}
+
+.empty-cart a { 
+    text-decoration: underline;
+    color: #6e6e6e;
+}
+
 .main-cart {
-    margin: 56px 0;
+    margin-top: 56px;
+    margin-bottom: 56px;
 }
 
 .main-cart h2 {

@@ -1,5 +1,5 @@
 import { Fragment, useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import CheckoutFooter from "./CheckoutFooter";
 import classes from "./CheckoutShipping.module.css";
@@ -11,23 +11,29 @@ import Spinner from "../../UI/Spinner/Spinner";
 import Button from "../../UI/Button/Button";
 
 const CheckoutShipping = (props) => {
-  const { storedValue } = useLocalStorage("user");
   const cartCtx = useContext(CartContext);
+  const history = useHistory();
+  const { storedValue } = useLocalStorage("user");
   const { isLoading, httpError, fetchData } = useHttp();
   const [didSubmit, setDidSubmit] = useState(false);
+  const [hideConfirmation, setHideConfirmation] = useState(false);
 
   const shippingChangeHandler = (event) => {
     props.getShipping(event.target.value);
   };
 
   const expressPrice = 5.99;
-
   let email, address;
 
   if (storedValue) {
     email = storedValue.email;
     address = `${storedValue.address}, ${storedValue.city} ${storedValue.state} ${storedValue.zipCode}, ${storedValue.country}`;
   }
+
+  const hideConfirmationHandler = () => {
+    setHideConfirmation(true);
+    history.replace("/cart");
+  };
 
   const confirmHandler = (event) => {
     event.preventDefault();
@@ -43,6 +49,7 @@ const CheckoutShipping = (props) => {
 
     setDidSubmit(true);
     localStorage.clear();
+    cartCtx.clearItem();
   };
 
   const formContext = (
@@ -105,29 +112,30 @@ const CheckoutShipping = (props) => {
     </form>
   );
 
-  const isSubmittingModalContent = (
-    <Modal modal="checkout-modal">
-      <Spinner color="#000" />
-    </Modal>
+  const orderSuccessContent = (
+    <div className={classes["order-successful"]}>
+      <span>
+        <i className="fa-regular fa-circle-check"></i>
+      </span>
+      <p>Your Order is confirmed!</p>
+      <p>
+        We'll send you a shipping confirmation email as soon as your order
+        ships.
+      </p>
+      <Button clicked={hideConfirmationHandler}>Done</Button>
+    </div>
   );
 
-  const didSubmitModalContent = (
+  const confirmationModalContent = (
     <Modal modal="checkout-modal">
-      <div className={classes["order-successful"]}>
-        <span>
-          <i class="fa-regular fa-circle-check"></i>
-        </span>
-        <p>Order Placed!</p>
-        <p>Order information was sent to your email.</p>
-        <Button>Done</Button>
-      </div>
+      {isLoading && <Spinner color="#000">Processing Order...</Spinner>}
+      {!isLoading && orderSuccessContent}
     </Modal>
   );
 
   return (
     <Fragment>
-      {isLoading && isSubmittingModalContent}
-      {!isLoading && didSubmit && didSubmitModalContent}
+      {didSubmit && !hideConfirmation && confirmationModalContent}
       {formContext}
     </Fragment>
   );

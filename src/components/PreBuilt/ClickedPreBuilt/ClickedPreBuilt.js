@@ -37,9 +37,15 @@ const ClickedPreBuilt = (props) => {
       }
       setPrebuilt(loadedPrebuilt);
     };
-    fetchData(transformData);
+    fetchData(
+      {
+        url: "https://react-ecommerce-pcbuilds-default-rtdb.firebaseio.com/prebuilt.json",
+      },
+      transformData
+    );
   }, [fetchData]);
 
+  console.log(params.prebuilt_id);
   const clickedItem = prebuilt.find((item) => item.name === params.prebuilt_id);
 
   const addToCartHandler = (amount) => {

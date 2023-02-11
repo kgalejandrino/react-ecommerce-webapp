@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import CartContext from "../../../store/cart-context";
@@ -40,9 +40,8 @@ const MainCart = () => {
     />
   ));
 
-  return (
-    <div className={`${classes["main-cart"]} row`}>
-      <h2>Cart</h2>
+  const mainCartContent = (
+    <Fragment>
       <table>
         <thead>
           <tr>
@@ -76,6 +75,21 @@ const MainCart = () => {
           </Button>
         </Link>
       </div>
+    </Fragment>
+  );
+  return (
+    <div className={`${classes["main-cart"]} row`}>
+      <h2>Cart</h2>
+      {cartCtx.items.length >= 1 ? (
+        mainCartContent
+      ) : (
+        <div className={classes["empty-cart"]}>
+          <p>Your cart is currently empty.</p>
+          <p>
+            Continue browsing <Link to="/pre-built">here</Link>
+          </p>
+        </div>
+      )}
     </div>
   );
 };

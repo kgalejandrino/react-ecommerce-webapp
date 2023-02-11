@@ -64,7 +64,6 @@
 .order-successful {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -75,6 +74,8 @@
 
 .order-successful p {
     margin-top: 12px;
+    text-align: center;
+    font-size: 0.875rem;
 }
 
 .order-successful p:first-of-type {
@@ -84,7 +85,7 @@
 }
 
 .order-successful button {
-    width: 100%;
-    margin-top: 18px;
+    width: 60%;
+    margin-top: 24px;
     background-color: #0086f8;
 }

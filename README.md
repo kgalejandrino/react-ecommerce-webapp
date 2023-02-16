@@ -6,13 +6,13 @@ A client side rendered React single page application, utilizing Firebase for bac
 
 <div align="center">
   <h3>
-      <img src="[https://icons8.com/icon/v8RpPQUwv0N8/html-5]" alt="HTML">
+      <img src="https://icons8.com/icon/v8RpPQUwv0N8/html-5" alt="HTML">
     &emsp;
-      <img src="[https://icons8.com/icon/21278/css3]" alt="CSS">
+      <img src="https://icons8.com/icon/21278/css3" alt="CSS">
     &emsp;
-      <img src="[https://icons8.com/icon/NfbyHexzVEDk/react]" alt="REACT">
+      <img src="https://icons8.com/icon/NfbyHexzVEDk/react" alt="React">
     &emsp;
-    <img src="[https://icons8.com/icon/62452/firebase]" alt="REACT">
+    <img src="https://icons8.com/icon/62452/firebase" alt="Firebase">
   </h3>
 </div>
 

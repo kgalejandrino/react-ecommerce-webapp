@@ -5,7 +5,7 @@ import ClickedPreBuilt from "../components/PreBuilt/ClickedPreBuilt/ClickedPreBu
 const PreBuiltDetail = (props) => {
   return (
     <Fragment>
-      <ClickedPreBuilt onShowCart={props.onShowCart} />
+      <ClickedPreBuilt />
     </Fragment>
   );
 };

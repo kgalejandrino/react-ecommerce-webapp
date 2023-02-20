@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import CartProvider from "./store/CartProvider";
 import SideCart from "./components/Cart/SideCart/SideCart";
@@ -13,15 +14,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
-
-  const showCartHandler = () => {
-    setShowCart(true);
-  };
-
-  const hideCartHandler = () => {
-    setShowCart(false);
-  };
+  const showCart = useSelector((state) => state.ui.cartIsVisible);
 
   useEffect(() => {
     if (showCart) {
@@ -36,19 +29,12 @@ function App() {
       <Switch>
         <Route path="/checkout/:link_id" component={Checkout} />
         <Route>
-          <Layout onShowCart={showCartHandler}>
-            {showCart && <SideCart onClose={hideCartHandler} />}
+          <Layout>
+            {showCart && <SideCart />}
             <Route path="/" exact component={Home} />
             <Route path="/build-a-pc" component={BuildPc} />
-            <Route
-              path="/pre-built"
-              exact
-              component={() => <PreBuilt onShowCart={showCartHandler} />}
-            />
-            <Route
-              path="/pre-built/:prebuilt_id"
-              component={() => <PreBuiltDetail onShowCart={showCartHandler} />}
-            />
+            <Route path="/pre-built" exact component={PreBuilt} />
+            <Route path="/pre-built/:prebuilt_id" component={PreBuiltDetail} />
             <Route path="/support" component={Support} />
             <Route path="/cart" component={Cart} />
           </Layout>

@@ -42,7 +42,6 @@ const AvailablePreBuilt = (props) => {
       cpu={item.cpu}
       gpu={item.gpu}
       price={item.price}
-      onShowCart={props.onShowCart}
     />
   ));
 

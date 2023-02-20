@@ -25,8 +25,7 @@ const Header = (props) => {
         >
           <Navigations nav="main-nav" />
         </nav>
-        {/* <Logo /> */}
-        <HeaderCartButton onClick={props.onShowCart} />
+        <HeaderCartButton />
       </div>
     </header>
   );

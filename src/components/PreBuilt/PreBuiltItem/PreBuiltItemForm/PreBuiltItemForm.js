@@ -1,13 +1,16 @@
-import React from "react";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../../../store/ui-slice";
 
 import classes from "./PreBuiltItemForm.module.css";
 import Button from "../../../UI/Button/Button";
 
 const PreBuiltItemForm = (props) => {
+  const dispatch = useDispatch();
+
   const submitHandler = (event) => {
     event.preventDefault();
 
-    props.onShowCart();
+    dispatch(uiActions.showCart());
     props.onAddToCart(1);
   };
 

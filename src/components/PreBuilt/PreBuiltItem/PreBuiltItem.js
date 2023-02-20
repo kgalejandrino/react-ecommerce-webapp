@@ -33,11 +33,7 @@ const PreBuiltItem = (props) => {
         </div>
         <p className={classes.price}>{price}</p>
       </Link>
-      <PreBuiltItemForm
-        onAddToCart={addToCartHandler}
-        onShowCart={props.onShowCart}
-        btnType="btnCart"
-      />
+      <PreBuiltItemForm onAddToCart={addToCartHandler} btnType="btnCart" />
     </li>
   );
 };

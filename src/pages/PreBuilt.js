@@ -7,7 +7,7 @@ const PreBuilt = (props) => {
   return (
     <Fragment>
       <PreBuiltSummary />
-      <AvailablePreBuilt onShowCart={props.onShowCart} />
+      <AvailablePreBuilt />
     </Fragment>
   );
 };

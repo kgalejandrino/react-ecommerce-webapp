@@ -45,7 +45,6 @@ const ClickedPreBuilt = (props) => {
     );
   }, [fetchData]);
 
-  console.log(params.prebuilt_id);
   const clickedItem = prebuilt.find((item) => item.name === params.prebuilt_id);
 
   const addToCartHandler = (amount) => {
@@ -70,11 +69,7 @@ const ClickedPreBuilt = (props) => {
         </div>
         <div className={classes["item-details"]}>
           <ClickedPreBuiltDetails item={clickedItem} />
-          <PreBuiltItemForm
-            onAddToCart={addToCartHandler}
-            onShowCart={props.onShowCart}
-            btnType="primary"
-          />
+          <PreBuiltItemForm onAddToCart={addToCartHandler} btnType="primary" />
         </div>
       </Fragment>
     );

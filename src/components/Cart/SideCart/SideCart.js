@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../../store/ui-slice";
 
 import Button from "../../UI/Button/Button";
 import Modal from "../../UI/Modal/Modal";
@@ -8,6 +10,7 @@ import classes from "./SideCart.module.css";
 import SideCartItem from "./SideCartItem";
 
 const Cart = (props) => {
+  const dispatch = useDispatch();
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -42,11 +45,14 @@ const Cart = (props) => {
     />
   ));
 
+  const closeCarthandler = () => {
+    dispatch(uiActions.hideCart());
+  };
   return (
-    <Modal onClose={props.onClose} modal="side-modal">
+    <Modal modal="side-modal">
       <div className={`${classes.header}`}>
         <p>Cart</p>
-        <span onClick={props.onClose}>
+        <span onClick={closeCarthandler}>
           <i className="fas fa-times"></i>
         </span>
       </div>
@@ -60,12 +66,12 @@ const Cart = (props) => {
         <p>{totalAmount}</p>
       </div>
       <div className={classes["cart-btns"]}>
-        <Link to="/cart" onClick={props.onClose}>
+        <Link to="/cart" onClick={closeCarthandler}>
           <Button btnType="primary" disabled={!hasItems}>
             View Cart
           </Button>
         </Link>
-        <Link to="/checkout/information" onClick={props.onClose}>
+        <Link to="/checkout/information" onClick={closeCarthandler}>
           <Button btnType="secondary" disabled={!hasItems}>
             Checkout
           </Button>

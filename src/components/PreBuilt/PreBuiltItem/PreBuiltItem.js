@@ -1,25 +1,27 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../../store/cart-slice";
 
-import CartContext from "../../../store/cart-context";
 import classes from "./PreBuiltItem.module.css";
 import PreBuiltItemForm from "./PreBuiltItemForm/PreBuiltItemForm";
 
 const PreBuiltItem = (props) => {
-  const cartCtx = useContext(CartContext);
+  const dispatch = useDispatch();
 
   const price = `$${props.price.toFixed(2)}`;
 
-  const addToCartHandler = (amount) => {
-    cartCtx.addItem({
-      id: props.id,
-      name: props.name,
-      img: props.img,
-      cpu: props.cpu,
-      gpu: props.gpu,
-      price: props.price,
-      amount: amount,
-    });
+  const addToCartHandler = () => {
+    dispatch(
+      cartActions.addItemToCart({
+        id: props.id,
+        name: props.name,
+        img: props.img,
+        cpu: props.cpu,
+        gpu: props.gpu,
+        price: props.price,
+        quantity: 1,
+      })
+    );
   };
 
   return (

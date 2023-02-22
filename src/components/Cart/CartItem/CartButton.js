@@ -6,11 +6,11 @@ const CartButton = (props) => {
       <div className={classes.actions}>
         <button
           onClick={props.onRemove}
-          disabled={props.amount === 1 ? true : false}
+          disabled={props.quantity === 1 ? true : false}
         >
           -
         </button>
-        <span>{props.amount}</span>
+        <span>{props.quantity}</span>
         <button onClick={props.onAdd}>+</button>
       </div>
       <span className={classes.remove} onClick={props.onRemoveAll}>

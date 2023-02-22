@@ -1,17 +1,13 @@
 import { useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
 import CartContext from "../../store/cart-context";
 import classes from "./HeaderCartButton.module.css";
 
 const HeaderCartButton = (props) => {
-  const cartCtx = useContext(CartContext);
   const dispatch = useDispatch();
-
-  const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
-    return curNumber + item.amount;
-  }, 0);
+  const cartQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const toggleCartHandler = () => {
     dispatch(uiActions.showCart());
@@ -23,7 +19,7 @@ const HeaderCartButton = (props) => {
         <span>
           <i className={`fas fa-shopping-cart`}></i>
         </span>
-        <p>{numberOfCartItems}</p>
+        <p>{cartQuantity}</p>
       </button>
     </div>
   );

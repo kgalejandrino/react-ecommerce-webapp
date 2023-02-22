@@ -11,7 +11,7 @@ const PreBuiltItemForm = (props) => {
     event.preventDefault();
 
     dispatch(uiActions.showCart());
-    props.onAddToCart(1);
+    props.onAddToCart();
   };
 
   return (

@@ -1,30 +1,31 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { cartActions } from "../../../store/cart-slice";
 
-import CartContext from "../../../store/cart-context";
 import Button from "../../UI/Button/Button";
-import classes from "./MainCart.module.css";
 import MainCartItem from "./MainCartItem";
+import classes from "./MainCart.module.css";
 
 const MainCart = () => {
-  const cartCtx = useContext(CartContext);
-
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const cartTotalPrice = useSelector((state) => state.cart.totalPrice);
 
   const addCartItemHandler = (item) => {
-    cartCtx.addItem({ ...item, amount: 1 });
+    dispatch(cartActions.addItemToCart({ ...item }));
   };
 
   const removeCartItemHandler = (id, type) => {
     if (type === "REMOVE") {
-      cartCtx.removeItem(id);
+      dispatch(cartActions.removeItemFromCart(id));
     }
     if (type === "REMOVEALL") {
-      cartCtx.removeAllItem(id);
+      dispatch(cartActions.removeAllItemFromCart(id));
     }
   };
 
-  const cartItems = cartCtx.items.map((item) => (
+  const cart = cartItems.map((item) => (
     <MainCartItem
       key={item.id}
       id={item.id}
@@ -32,7 +33,7 @@ const MainCart = () => {
       img={item.img}
       cpu={item.cpu}
       gpu={item.gpu}
-      amount={item.amount}
+      quantity={item.quantity}
       price={item.price}
       onAdd={addCartItemHandler.bind(null, item)}
       onRemove={removeCartItemHandler.bind(null, item.id, "REMOVE")}
@@ -51,12 +52,12 @@ const MainCart = () => {
           </tr>
         </thead>
         <tbody>
-          {cartItems}
+          {cart}
           <tr>
             <td colSpan="3">
               <div className={classes.total}>
                 <span>Total</span>
-                <span>{`${totalAmount}`}</span>
+                <span>{`${cartTotalPrice.toFixed(2)}`}</span>
               </div>
             </td>
           </tr>
@@ -80,7 +81,7 @@ const MainCart = () => {
   return (
     <div className={`${classes["main-cart"]} row`}>
       <h2>Cart</h2>
-      {cartCtx.items.length >= 1 ? (
+      {cartItems.length >= 1 ? (
         mainCartContent
       ) : (
         <div className={classes["empty-cart"]}>

@@ -17,7 +17,7 @@ const SideCartItem = (props) => {
       >
         <CartButton
           cart="sidecart-btn"
-          amount={props.amount}
+          quantity={props.quantity}
           onRemove={props.onRemove}
           onAdd={props.onAdd}
           onRemoveAll={props.onRemoveAll}

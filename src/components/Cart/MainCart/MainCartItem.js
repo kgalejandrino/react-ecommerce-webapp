@@ -17,7 +17,7 @@ const MainCartItem = (props) => {
         >
           <CartButton
             cart="mobilecart-btn"
-            amount={props.amount}
+            quantity={props.quantity}
             onAdd={props.onAdd}
             onRemove={props.onRemove}
             onRemoveAll={props.onRemoveAll}
@@ -27,7 +27,7 @@ const MainCartItem = (props) => {
       <td className={classes.quantity}>
         <CartButton
           cart="maincart-btn"
-          amount={props.amount}
+          quantity={props.quantity}
           onAdd={props.onAdd}
           onRemove={props.onRemove}
           onRemoveAll={props.onRemoveAll}

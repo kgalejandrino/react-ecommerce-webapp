@@ -1,35 +1,36 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../../store/ui-slice";
+import { cartActions } from "../../../store/cart-slice";
 
 import Button from "../../UI/Button/Button";
 import Modal from "../../UI/Modal/Modal";
-import CartContext from "../../../store/cart-context";
-import classes from "./SideCart.module.css";
 import SideCartItem from "./SideCartItem";
+import classes from "./SideCart.module.css";
 
 const Cart = (props) => {
   const dispatch = useDispatch();
-  const cartCtx = useContext(CartContext);
+  const cartItems = useSelector((state) => state.cart.items);
+  const cartTotalPrice = useSelector((state) =>
+    state.cart.totalPrice.toFixed(2).replace("-0", "0")
+  );
 
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
-  const hasItems = cartCtx.items.length > 0;
+  const hasItems = cartItems.length > 0;
 
   const addCartItemHandler = (item) => {
-    cartCtx.addItem({ ...item, amount: 1 });
+    dispatch(cartActions.addItemToCart({ ...item }));
   };
 
   const removeCartItemHandler = (id, type) => {
     if (type === "REMOVE") {
-      cartCtx.removeItem(id);
+      dispatch(cartActions.removeItemFromCart(id));
     }
     if (type === "REMOVEALL") {
-      cartCtx.removeAllItem(id);
+      dispatch(cartActions.removeAllItemFromCart(id));
     }
   };
 
-  const cartItems = cartCtx.items.map((item) => (
+  const cart = cartItems.map((item) => (
     <SideCartItem
       key={item.id}
       id={item.id}
@@ -37,7 +38,7 @@ const Cart = (props) => {
       img={item.img}
       cpu={item.cpu}
       gpu={item.gpu}
-      amount={item.amount}
+      quantity={item.quantity}
       price={item.price}
       onAdd={addCartItemHandler.bind(null, item)}
       onRemove={removeCartItemHandler.bind(null, item.id, "REMOVE")}
@@ -48,6 +49,7 @@ const Cart = (props) => {
   const closeCarthandler = () => {
     dispatch(uiActions.hideCart());
   };
+
   return (
     <Modal modal="side-modal">
       <div className={`${classes.header}`}>
@@ -57,13 +59,13 @@ const Cart = (props) => {
         </span>
       </div>
       {hasItems ? (
-        <ul>{cartItems}</ul>
+        <ul>{cart}</ul>
       ) : (
         <h3 className={classes.empty}>YOUR CART IS CURRENTLY EMPTY</h3>
       )}
       <div className={`${classes.total} flex`}>
         <p>Total</p>
-        <p>{totalAmount}</p>
+        <p>{`$${cartTotalPrice}`}</p>
       </div>
       <div className={classes["cart-btns"]}>
         <Link to="/cart" onClick={closeCarthandler}>

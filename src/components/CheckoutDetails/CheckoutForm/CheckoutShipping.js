@@ -1,17 +1,19 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../../store/cart-slice";
 
 import CheckoutFooter from "./CheckoutFooter";
 import classes from "./CheckoutShipping.module.css";
 import useLocalStorage from "../../../hooks/use-localStorage";
 import useHttp from "../../../hooks/use-http";
-import CartContext from "../../../store/cart-context";
 import Modal from "../../UI/Modal/Modal";
 import Spinner from "../../UI/Spinner/Spinner";
 import Button from "../../UI/Button/Button";
 
 const CheckoutShipping = (props) => {
-  const cartCtx = useContext(CartContext);
+  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
   const history = useHistory();
   const { storedValue } = useLocalStorage("user");
   const { isLoading, httpError, fetchData } = useHttp();
@@ -43,13 +45,13 @@ const CheckoutShipping = (props) => {
       method: "POST",
       body: {
         user: storedValue,
-        orders: cartCtx.items,
+        orders: cartItems,
       },
     });
 
     setDidSubmit(true);
     localStorage.clear();
-    cartCtx.clearItem();
+    dispatch(cartActions.clearItemFromCart());
   };
 
   const formContext = (

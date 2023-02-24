@@ -1,18 +1,19 @@
-import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 
 import classes from "./CheckoutSummary.module.css";
-import CartContext from "../../../store/cart-context";
 import CheckoutItem from "../CheckoutSummary/CheckoutItem";
 import Button from "../../UI/Button/Button";
 
 const CheckoutSummary = (props) => {
-  const cartCtx = useContext(CartContext);
+  const cartItems = useSelector((state) => state.cart.items);
+  const subTotal = useSelector((state) =>
+    state.cart.totalPrice.toFixed(2).replace("-0", "0")
+  );
 
-  const subTotal = cartCtx.totalAmount.toFixed(2);
   const tax = (subTotal * 0.0725).toFixed(2);
   const total = (+subTotal + +tax + +props.shipping).toFixed(2);
 
-  const cartItems = cartCtx.items.map((item) => {
+  const cart = cartItems.map((item) => {
     return (
       <CheckoutItem
         key={item.id}
@@ -27,7 +28,7 @@ const CheckoutSummary = (props) => {
 
   return (
     <div className={classes.summary}>
-      <ul className={classes["item-lists"]}>{cartItems}</ul>
+      <ul className={classes["item-lists"]}>{cart}</ul>
       <div className={classes.coupon}>
         <input type="text" id="coupon" placeholder="Enter promo code" />
         <Button btnType="secondary" round="round" disabled="true">

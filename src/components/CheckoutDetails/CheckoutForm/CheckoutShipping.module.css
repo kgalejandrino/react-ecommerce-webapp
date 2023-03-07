@@ -61,30 +61,50 @@
 .price { font-weight: 800;}
 
 /* Modal Successful */
-.order-successful {
+.order {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.order-successful span {
+
+.notification {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.notification.success {
+    background-color: #00ce6f;
+}
+
+.notification.error {
+    background-color: #ff1e20;
+}
+
+.order span {
     font-size: 3.2rem;
     color: #00ce6f;
 }
 
-.order-successful p {
+.order p {
     margin-top: 12px;
     text-align: center;
     font-size: 0.875rem;
 }
 
-.order-successful p:first-of-type {
+.order p:first-of-type {
     font-size: 1.2rem;
     font-weight: 700;
     color: #00ce6f;
 }
 
-.order-successful button {
+.order button {
     width: 60%;
     margin-top: 24px;
     background-color: #0086f8;

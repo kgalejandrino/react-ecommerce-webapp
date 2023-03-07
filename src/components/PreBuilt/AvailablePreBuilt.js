@@ -25,6 +25,7 @@ const AvailablePreBuilt = (props) => {
       }
       setPrebuilt(loadedPrebuilt);
     };
+
     fetchData(
       {
         url: "https://react-ecommerce-pcbuilds-default-rtdb.firebaseio.com/prebuilt.json",

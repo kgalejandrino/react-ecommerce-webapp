@@ -4,7 +4,7 @@ const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [httpError, setHttpError] = useState(null);
 
-  const fetchData = useCallback(async (requestConfig, transformData) => {
+  const fetchData = useCallback(async (requestConfig, transformData = null) => {
     setIsLoading(true);
     try {
       const response = await fetch(requestConfig.url, {
@@ -12,13 +12,12 @@ const useHttp = () => {
         headers: requestConfig.headers ? requestConfig.headers : {},
         body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
       });
-
       if (!response.ok) {
-        throw new Error("Something went wrong!");
+        throw new Error(`${response.status} ${response.statusText}`);
       }
 
       const data = await response.json();
-      transformData(data);
+      if (transformData) transformData(data);
     } catch (error) {
       setHttpError(error.message);
     }

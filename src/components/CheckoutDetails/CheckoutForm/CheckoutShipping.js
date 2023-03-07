@@ -115,7 +115,7 @@ const CheckoutShipping = (props) => {
   );
 
   const orderSuccessContent = (
-    <div className={classes["order-successful"]}>
+    <Fragment>
       <span>
         <i className="fa-regular fa-circle-check"></i>
       </span>
@@ -125,13 +125,24 @@ const CheckoutShipping = (props) => {
         ships.
       </p>
       <Button clicked={hideConfirmationHandler}>Done</Button>
-    </div>
+    </Fragment>
   );
 
   const confirmationModalContent = (
     <Modal modal="checkout-modal">
-      {isLoading && <Spinner color="#000">Processing Order...</Spinner>}
-      {!isLoading && orderSuccessContent}
+      <div className={classes["order"]}>
+        <div
+          className={`${classes.notification} ${
+            httpError ? classes.error : classes.success
+          }
+          `}
+        >
+          {httpError ? "Error" : "Success"}
+        </div>
+        {isLoading && <Spinner color="#000">Processing Order...</Spinner>}
+        {httpError && <div className="error">{httpError}</div>}
+        {!isLoading && !httpError && orderSuccessContent}
+      </div>
     </Modal>
   );
 

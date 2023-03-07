@@ -1,9 +1,10 @@
-import { useState, useEffect, useContext, Fragment } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../../store/cart-slice";
 
 import ClickedPreBuiltDetails from "./ClickedPreBuiltDetails";
 import PreBuiltItemForm from "../PreBuiltItem/PreBuiltItemForm/PreBuiltItemForm";
-import CartContext from "../../../store/cart-context";
 import Spinner from "../../UI/Spinner/Spinner";
 import useHttp from "../../../hooks/use-http";
 import classes from "./ClickedPreBuilt.module.css";
@@ -12,7 +13,7 @@ const ClickedPreBuilt = (props) => {
   const [prebuilt, setPrebuilt] = useState([]);
   const { isLoading, httpError, fetchData } = useHttp();
   const params = useParams();
-  const cartCtx = useContext(CartContext);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const transformData = (data) => {
@@ -47,16 +48,18 @@ const ClickedPreBuilt = (props) => {
 
   const clickedItem = prebuilt.find((item) => item.name === params.prebuilt_id);
 
-  const addToCartHandler = (amount) => {
-    cartCtx.addItem({
-      id: clickedItem.id,
-      name: clickedItem.name,
-      img: clickedItem.img,
-      cpu: clickedItem.cpu,
-      gpu: clickedItem.gpu,
-      price: clickedItem.price,
-      amount: amount,
-    });
+  const addToCartHandler = () => {
+    dispatch(
+      cartActions.addItemToCart({
+        id: clickedItem.id,
+        name: clickedItem.name,
+        img: clickedItem.img,
+        cpu: clickedItem.cpu,
+        gpu: clickedItem.gpu,
+        price: clickedItem.price,
+        quantity: 1,
+      })
+    );
   };
 
   let loadItem;

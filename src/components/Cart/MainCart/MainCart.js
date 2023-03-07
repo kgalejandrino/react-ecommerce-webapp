@@ -57,7 +57,7 @@ const MainCart = () => {
             <td colSpan="3">
               <div className={classes.total}>
                 <span>Total</span>
-                <span>{`${cartTotalPrice.toFixed(2)}`}</span>
+                <span>{`$${cartTotalPrice.toFixed(2)}`}</span>
               </div>
             </td>
           </tr>

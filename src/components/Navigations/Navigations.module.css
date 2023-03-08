@@ -14,8 +14,7 @@
 }
 
 .main-nav li a.active,
-.main-nav li a:hover, 
-.main-nav li a:active {
+.main-nav li a:hover {
     color: #cecece;
 }
 

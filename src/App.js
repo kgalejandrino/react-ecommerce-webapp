@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { sendCartData, fetchCartData } from "./store/cart-actions";
-import SideCart from "./components/Cart/SideCart/SideCart";
-import Layout from "./components/Layout/Layout";
+
+import RootLayout from "./pages/Root";
 import Home from "./pages/Home";
 import PreBuilt from "./pages/PreBuilt";
 import PreBuiltDetail from "./pages/PreBuiltDetail";
@@ -15,8 +14,23 @@ import Checkout from "./pages/Checkout";
 
 let isInitial = true;
 
+const router = createHashRouter([
+  { path: "/checkout/:link_id", element: <Checkout /> },
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "build-a-pc", element: <BuildPc /> },
+      { path: "pre-built/:prebuilt_id", element: <PreBuiltDetail /> },
+      { path: "pre-built", element: <PreBuilt /> },
+      { path: "support", element: <Support /> },
+      { path: "cart", element: <Cart /> },
+    ],
+  },
+]);
+
 function App() {
-  const showCart = useSelector((state) => state.ui.cartIsVisible);
   const cartItems = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -25,12 +39,6 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (showCart) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
     if (isInitial) {
       isInitial = false;
       return;
@@ -39,24 +47,9 @@ function App() {
     if (cartItems.changed) {
       dispatch(sendCartData(cartItems));
     }
-  }, [showCart, cartItems, dispatch]);
+  }, [cartItems, dispatch]);
 
-  return (
-    <Switch>
-      <Route path="/checkout/:link_id" component={Checkout} />
-      <Route>
-        <Layout>
-          {showCart && <SideCart />}
-          <Route path="/" exact component={Home} />
-          <Route path="/build-a-pc" component={BuildPc} />
-          <Route path="/pre-built" exact component={PreBuilt} />
-          <Route path="/pre-built/:prebuilt_id" component={PreBuiltDetail} />
-          <Route path="/support" component={Support} />
-          <Route path="/cart" component={Cart} />
-        </Layout>
-      </Route>
-    </Switch>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

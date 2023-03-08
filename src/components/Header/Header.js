@@ -1,8 +1,9 @@
+import { useState } from "react";
+
 import HeaderCartButton from "./HeaderCartButton";
 import Navigations from "../Navigations/Navigations";
 import classes from "./Header.module.css";
 import Logo from "../Logo/Logo";
-import { useState } from "react";
 
 const Header = (props) => {
   const [showMenu, setShowMenu] = useState(false);

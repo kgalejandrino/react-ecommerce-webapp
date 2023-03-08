@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Input from "../../UI/Input/Input";
 import classes from "./CheckoutInformation.module.css";
@@ -11,7 +11,7 @@ const CheckoutInformation = (props) => {
   const emailInputRef = useRef();
   const addressInputRef = useRef();
   const { storedValue } = useLocalStorage("user");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const {
     input: enteredEmail,
@@ -125,7 +125,7 @@ const CheckoutInformation = (props) => {
       })
     );
 
-    history.push("/checkout/shipping");
+    navigate("/checkout/shipping");
   };
 
   return (

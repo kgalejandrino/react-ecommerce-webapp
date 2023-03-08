@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 
@@ -14,7 +14,7 @@ import Button from "../../UI/Button/Button";
 const CheckoutShipping = (props) => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const { storedValue } = useLocalStorage("user");
   const { isLoading, httpError, fetchData } = useHttp();
   const [didSubmit, setDidSubmit] = useState(false);
@@ -34,7 +34,7 @@ const CheckoutShipping = (props) => {
 
   const hideConfirmationHandler = () => {
     setHideConfirmation(true);
-    history.replace("/cart");
+    navigate("/cart");
   };
 
   const confirmHandler = (event) => {

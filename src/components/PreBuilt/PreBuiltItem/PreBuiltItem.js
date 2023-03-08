@@ -26,7 +26,7 @@ const PreBuiltItem = (props) => {
 
   return (
     <li className={classes.item}>
-      <Link to={`pre-built/${props.name}`}>
+      <Link to={props.name}>
         <img src={props.img} alt="pc tower with purple rgb light" />
         <div className={classes.description}>
           <h3>{props.name}</h3>

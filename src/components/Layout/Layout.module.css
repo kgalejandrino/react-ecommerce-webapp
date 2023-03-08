@@ -1,5 +1,0 @@
-.main { padding-bottom: 320px; }
-
-@media only screen and (max-width: 768px) {
-    .main { padding-bottom: 700px; }
-}

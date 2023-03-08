@@ -7,17 +7,26 @@ const Navigations = (props) => {
   return (
     <ul className={`${classes[props.nav]}`}>
       <li>
-        <NavLink activeClassName={classes.active} to="/build-a-pc">
+        <NavLink
+          to="build-a-pc"
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+        >
           Build a PC
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName={classes.active} to="/pre-built">
+        <NavLink
+          to="pre-built"
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+        >
           Pre-Built PC
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName={classes.active} to="/support">
+        <NavLink
+          to="support"
+          className={({ isActive }) => (isActive ? classes.active : undefined)}
+        >
           Support
         </NavLink>
       </li>

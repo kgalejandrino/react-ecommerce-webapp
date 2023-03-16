@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { sendCartData, fetchCartData } from "./store/cart-actions";
+import { loader as prebuiltLoader } from "./pages/PreBuilt";
 
 import RootLayout from "./pages/Root";
 import Home from "./pages/Home";
@@ -23,7 +24,11 @@ const router = createHashRouter([
       { index: true, element: <Home /> },
       { path: "build-a-pc", element: <BuildPc /> },
       { path: "pre-built/:prebuilt_id", element: <PreBuiltDetail /> },
-      { path: "pre-built", element: <PreBuilt /> },
+      {
+        path: "pre-built",
+        element: <PreBuilt />,
+        loader: prebuiltLoader,
+      },
       { path: "support", element: <Support /> },
       { path: "cart", element: <Cart /> },
     ],

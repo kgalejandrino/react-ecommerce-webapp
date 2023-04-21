@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export const transformData = (data) => {
   const loadedPrebuilt = [];
   for (const key in data) {
@@ -12,3 +15,13 @@ export const transformData = (data) => {
   }
   return loadedPrebuilt;
 };
+
+export default function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}

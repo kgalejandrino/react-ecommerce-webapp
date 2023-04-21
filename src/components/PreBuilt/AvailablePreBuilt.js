@@ -1,7 +1,12 @@
+import { useNavigation } from "react-router-dom";
+
 import classes from "./AvailablePreBuilt.module.css";
 import PreBuiltItem from "./PreBuiltItem/PreBuiltItem";
+import Spinner from "../UI/Spinner/Spinner";
 
 const AvailablePreBuilt = (props) => {
+  const navigation = useNavigation();
+
   const preBuiltItem = props.prebuilt.map((item) => (
     <PreBuiltItem
       key={item.id}
@@ -25,8 +30,8 @@ const AvailablePreBuilt = (props) => {
             <option value="high">Sort by price: high to low</option>
           </select>
         </div>
-        {/* {isLoading && <Spinner />}
-        {httpError && <div className="error">{httpError}</div>} */}
+        {navigation.state === "loading" && <Spinner />}
+        {props.httpError && <div className="error">{props.httpMessage}</div>}
         {/* {!isLoading && !httpError && (
           <div className={classes.items}>{preBuiltItem}</div>
         )} */}

@@ -6,12 +6,17 @@ import AvailablePreBuilt from "../components/PreBuilt/AvailablePreBuilt";
 import PreBuiltSummary from "../components/PreBuilt/PreBuiltSummary";
 
 const PreBuilt = () => {
-  const prebuilt = useLoaderData();
+  const data = useLoaderData();
+  const prebuilt = transformData(data);
 
   return (
     <Fragment>
       <PreBuiltSummary />
-      <AvailablePreBuilt prebuilt={prebuilt} />
+      <AvailablePreBuilt
+        prebuilt={prebuilt}
+        httpError={data.isError}
+        httpMessage={data.message}
+      />
     </Fragment>
   );
 };
@@ -24,10 +29,12 @@ export async function loader() {
   );
 
   if (!response.ok) {
-    // throw new Error(`${response.status} ${response.statusText}`);
+    return { isError: true, message: `${response.status.text}` };
+  } else {
+    return response;
   }
 
-  const data = await response.json();
-  const prebuiltData = transformData(data);
-  return prebuiltData;
+  // const data = await response.json();
+  // const prebuiltData = transformData(data);
+  // return prebuiltData;
 }

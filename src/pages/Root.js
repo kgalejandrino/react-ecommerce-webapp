@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import SideCart from "../components/Cart/SideCart/SideCart";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import ScrollToTop from "../libs/api";
 
 const RootLayout = () => {
   const showCart = useSelector((state) => state.ui.cartIsVisible);
@@ -19,6 +20,7 @@ const RootLayout = () => {
 
   return (
     <Fragment>
+      <ScrollToTop />
       {showCart && <SideCart />}
       <Header />
       <main>

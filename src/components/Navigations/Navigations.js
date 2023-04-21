@@ -22,14 +22,14 @@ const Navigations = (props) => {
           Pre-Built PC
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink
           to="support"
           className={({ isActive }) => (isActive ? classes.active : undefined)}
         >
           Support
         </NavLink>
-      </li>
+      </li> */}
     </ul>
   );
 };

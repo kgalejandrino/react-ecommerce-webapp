@@ -1,7 +1,7 @@
 import React from "react";
 
 const BuildPc = () => {
-  return <div>Build A PC</div>;
+  return <div>In progress...</div>;
 };
 
 export default BuildPc;

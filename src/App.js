@@ -12,6 +12,7 @@ import BuildPc from "./pages/BuildPc";
 import Support from "./pages/Support";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import ErrorPage from "./pages/Error";
 
 let isInitial = true;
 
@@ -20,6 +21,7 @@ const router = createHashRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
       { path: "build-a-pc", element: <BuildPc /> },

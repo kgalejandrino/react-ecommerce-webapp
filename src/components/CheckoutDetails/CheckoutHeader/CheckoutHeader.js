@@ -8,22 +8,37 @@ const CheckoutHeader = () => {
     <div className={classes.header}>
       <ul className={classes["header-links"]}>
         <li>
-          <NavLink activeClassName={classes.active} to="/cart">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+            to="/cart"
+          >
             Cart
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName={classes.active} to="/checkout/information">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+            to="/checkout/information"
+          >
             Information
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName={classes.active} to="/checkout/shipping">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+            to="/checkout/shipping"
+          >
             Shipping
           </NavLink>
         </li>
         {/* <li>
-          <NavLink activeClassName={classes.active} to="/checkout/payment">
+          <NavLink className={({ isActive }) => (isActive ? classes.active : undefined)} to="/checkout/payment">
             Payment
           </NavLink>
         </li> */}

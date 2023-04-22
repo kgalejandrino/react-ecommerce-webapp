@@ -7,73 +7,16 @@ import CheckoutFooter from "./CheckoutFooter";
 import useInput from "../../../hooks/use-input";
 import useLocalStorage from "../../../hooks/use-localStorage";
 
+function getFormValues() {
+  const storedValues = JSON.parse(localStorage.getItem("user"));
+  return storedValues || "";
+}
+
 const CheckoutInformation = (props) => {
   const emailInputRef = useRef();
   const addressInputRef = useRef();
-  const { storedValue } = useLocalStorage("user");
   const navigate = useNavigate();
-
-  const {
-    input: enteredEmail,
-    isValid: enteredEmailIsValid,
-    hasError: emailInputHasError,
-    getStoredInput: getEmailStoredInputHandler,
-    inputChangeHandler: emailChangeHandler,
-    inputBlurHandler: emailBlurHandler,
-  } = useInput((value) => value.trim() !== "" && value.trim().includes("@"));
-
-  const {
-    input: enteredFname,
-    isValid: enteredFnameIsValid,
-    hasError: fnameInputHasError,
-    getStoredInput: getFirstNameStoredInputHandler,
-    inputChangeHandler: fnameChangeHandler,
-    inputBlurHandler: fnameBlurHandler,
-  } = useInput((value) => value.trim() !== "" && /^[A-Za-z\s]+$/.test(value));
-
-  const {
-    input: enteredLname,
-    isValid: enteredLnameIsValid,
-    hasError: lnameInputHasError,
-    getStoredInput: getLastNameStoredInputHandler,
-    inputChangeHandler: lnameChangeHandler,
-    inputBlurHandler: lnameBlurHandler,
-  } = useInput((value) => value.trim() !== "" && /^[A-Za-z\s]+$/.test(value));
-
-  const {
-    input: enteredAddress,
-    isValid: enteredAddressIsValid,
-    hasError: addressInputHasError,
-    getStoredInput: getAddressStoredInputHandler,
-    inputChangeHandler: addressChangeHandler,
-    inputBlurHandler: addressBlurHandler,
-  } = useInput(
-    (value) => value.trim() !== "" && /^[a-zA-Z0-9\s,.'-]{3,}$/.test(value)
-  );
-
-  const {
-    input: enteredCode,
-    isValid: enteredCodeIsValid,
-    hasError: codeInputHasError,
-    getStoredInput: getCodeStoredInputHandler,
-    inputChangeHandler: codeChangeHandler,
-    inputBlurHandler: codeBlurHandler,
-  } = useInput(
-    (value) =>
-      value.trim() !== "" && value.trim() !== "" && /^[0-9]{5}$/.test(value)
-  );
-
-  const {
-    input: enteredCity,
-    isValid: enteredCityIsValid,
-    hasError: cityInputHasError,
-    getStoredInput: getCityStoredInputHandler,
-    inputChangeHandler: cityChangeHandler,
-    inputBlurHandler: cityBlurHandler,
-  } = useInput(
-    (value) =>
-      value.trim() !== "" && value.trim() !== "" && /^[A-Za-z\s]+$/.test(value)
-  );
+  const storedValues = getFormValues();
 
   useEffect(() => {
     if (props.editContact) {
@@ -81,26 +24,75 @@ const CheckoutInformation = (props) => {
     } else if (props.editAddress) {
       addressInputRef.current.focus();
     }
+  }, [props.editContact, props.editAddress]);
 
-    if (storedValue) {
-      getEmailStoredInputHandler(storedValue.email);
-      getFirstNameStoredInputHandler(storedValue.firstName);
-      getLastNameStoredInputHandler(storedValue.lastName);
-      getAddressStoredInputHandler(storedValue.address);
-      getCodeStoredInputHandler(storedValue.zipCode);
-      getCityStoredInputHandler(storedValue.city);
-    }
-  }, [
-    props.editContact,
-    props.editAddress,
-    storedValue,
-    getEmailStoredInputHandler,
-    getFirstNameStoredInputHandler,
-    getLastNameStoredInputHandler,
-    getAddressStoredInputHandler,
-    getCodeStoredInputHandler,
-    getCityStoredInputHandler,
-  ]);
+  const {
+    input: enteredEmail,
+    isValid: enteredEmailIsValid,
+    hasError: emailInputHasError,
+    inputChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+  } = useInput(
+    (value) => value.trim() !== "" && value.trim().includes("@"),
+    storedValues.email || ""
+  );
+
+  const {
+    input: enteredFname,
+    isValid: enteredFnameIsValid,
+    hasError: fnameInputHasError,
+    inputChangeHandler: fnameChangeHandler,
+    inputBlurHandler: fnameBlurHandler,
+  } = useInput(
+    (value) => value.trim() !== "" && /^[A-Za-z\s]+$/.test(value),
+    storedValues.firstName || ""
+  );
+
+  const {
+    input: enteredLname,
+    isValid: enteredLnameIsValid,
+    hasError: lnameInputHasError,
+    inputChangeHandler: lnameChangeHandler,
+    inputBlurHandler: lnameBlurHandler,
+  } = useInput(
+    (value) => value.trim() !== "" && /^[A-Za-z\s]+$/.test(value),
+    storedValues.lastName || ""
+  );
+
+  const {
+    input: enteredAddress,
+    isValid: enteredAddressIsValid,
+    hasError: addressInputHasError,
+    inputChangeHandler: addressChangeHandler,
+    inputBlurHandler: addressBlurHandler,
+  } = useInput(
+    (value) => value.trim() !== "" && /^[a-zA-Z0-9\s,.'-]{3,}$/.test(value),
+    storedValues.address || ""
+  );
+
+  const {
+    input: enteredCode,
+    isValid: enteredCodeIsValid,
+    hasError: codeInputHasError,
+    inputChangeHandler: codeChangeHandler,
+    inputBlurHandler: codeBlurHandler,
+  } = useInput(
+    (value) =>
+      value.trim() !== "" && value.trim() !== "" && /^[0-9]{5}$/.test(value),
+    storedValues.zipCode || ""
+  );
+
+  const {
+    input: enteredCity,
+    isValid: enteredCityIsValid,
+    hasError: cityInputHasError,
+    inputChangeHandler: cityChangeHandler,
+    inputBlurHandler: cityBlurHandler,
+  } = useInput(
+    (value) =>
+      value.trim() !== "" && value.trim() !== "" && /^[A-Za-z\s]+$/.test(value),
+    storedValues.city || ""
+  );
 
   let formIsValid =
     enteredEmailIsValid &&

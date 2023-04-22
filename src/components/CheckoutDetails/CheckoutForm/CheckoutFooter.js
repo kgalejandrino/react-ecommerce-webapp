@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 import classes from "./CheckoutFooter.module.css";
 import Button from "../../UI/Button/Button";
@@ -18,7 +18,10 @@ const CheckoutFooter = (props) => {
     <div className={classes["form-footer"]}>
       <span>
         <i className="far fa-hand-point-left" aria-hidden="true"></i>
-        <Link to="/cart" href="#return">
+        <Link
+          to={prev === "cart" ? `/${prev}` : `/checkout/${prev}`}
+          href="#return"
+        >
           Return to {prev}
         </Link>
       </span>

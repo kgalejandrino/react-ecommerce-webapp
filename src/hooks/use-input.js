@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 
-const useInput = (validateInput) => {
-  const [enteredInput, setEnteredInput] = useState("");
+const useInput = (validateInput, storedValue) => {
+  const [enteredInput, setEnteredInput] = useState(storedValue);
   const [isTouched, setIsTouched] = useState(false);
 
   const valueIsValid = validateInput(enteredInput);
@@ -15,17 +15,10 @@ const useInput = (validateInput) => {
     setIsTouched(true);
   };
 
-  const getStoredInput = (val) => {
-    if (val) {
-      setEnteredInput(val);
-    }
-  };
-
   return {
     input: enteredInput,
     hasError,
     isValid: valueIsValid,
-    getStoredInput,
     inputChangeHandler,
     inputBlurHandler,
   };

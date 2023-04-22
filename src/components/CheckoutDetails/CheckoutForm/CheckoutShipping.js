@@ -15,7 +15,7 @@ const CheckoutShipping = (props) => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { storedValue } = useLocalStorage("user");
+  const storedValue = useLocalStorage("user");
   const { isLoading, httpError, fetchData } = useHttp();
   const [didSubmit, setDidSubmit] = useState(false);
   const [hideConfirmation, setHideConfirmation] = useState(false);

@@ -10,7 +10,7 @@ const useLocalStorage = (key) => {
     }
   }, [key]);
 
-  return { storedValue };
+  return storedValue;
 };
 
 export default useLocalStorage;

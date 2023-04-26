@@ -31,7 +31,7 @@ const AvailablePreBuilt = (props) => {
           </select>
         </div>
         {navigation.state === "loading" && <Spinner />}
-        {props.httpError && <div className="error">{props.httpMessage}</div>}
+        {props.httpError && <div className="error">asdasdas</div>}
         {/* {!isLoading && !httpError && (
           <div className={classes.items}>{preBuiltItem}</div>
         )} */}
